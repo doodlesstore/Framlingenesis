@@ -1,0 +1,27 @@
+{
+  "name": "Framlin Genesis #3396",
+  "description": "Framlin Genesis - 7,777 Framlins on BNB Chain. Hue-shift variant of the Framlin master art; tier border shows rarity.",
+  "image": "https://doodlesstore.github.io/Framlingenesis/images/3396.png",
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Mythic"
+    },
+    {
+      "trait_type": "Hue shift",
+      "value": 133
+    },
+    {
+      "trait_type": "Saturation",
+      "value": 1.1
+    },
+    {
+      "trait_type": "Brightness",
+      "value": 1.3
+    },
+    {
+      "trait_type": "Style",
+      "value": "Framlin hue-shift"
+    }
+  ]
+}
