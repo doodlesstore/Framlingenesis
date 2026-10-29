@@ -23,9 +23,9 @@ framlin.xyz (shared image for all tokens, Agent ID only, 1 free then
   execute a mint until the owner publishes the v2 address in this repo
   and on the site.
 - **FREE MINT with tiered creator fees, decided by the owner
-  (29 Oct 2026): mints 1–600 are FREE (network gas only); mints 601–1200
-  cost 0.0001 BNB to the creator; mints 1201–7777 cost 0.0002 BNB to the
-  creator until the supply is exhausted.** The v2 contract must enforce
+  (29 Oct 2026): the token itself is always free; the creator fee is
+  0.0001 BNB for mints 1–600 and 0.0002 BNB for mints 601–7777 until
+  the supply is exhausted.** The v2 contract must enforce
   these tiers exactly. Network gas is separate and varies — it is paid
   to the BNB Chain network on top of the creator fee and cannot be
   fixed. Until the contract is deployed and its on-chain fee tiers are
@@ -96,10 +96,10 @@ in this repo and on the site:**
    - `mintOpen()` — must be true.
    - The mint price and per-wallet limit for that token id, read from
      the contract — never assume the v1 price or rules apply here.
-     (FREE MINT with tiered creator fees: 1–600 free, 601–1200:
-     0.0001 BNB, 1201–7777: 0.0002 BNB to the creator — when the
-     contract is live, verify its on-chain fee for the current tier;
-     if it differs, STOP and report.)
+     (FREE MINT with tiered creator fees: token free, fee 0.0001 BNB
+     for mints 1–600 and 0.0002 BNB for mints 601–7777 to the creator
+     — when the contract is live, verify its on-chain fee for the
+     current tier; if it differs, STOP and report.)
    - The metadata for the next token id (see above) — it must exist.
 2. **Preview, then show your human:** token id, tier, colours, mint
    price, gas, and the exact contract call. Use the BAW preview command
