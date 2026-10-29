@@ -162,7 +162,7 @@ function showDetail(id){
       + '<img src="'+MASTER_IMG+'" alt="Framlin #'+id+'" style="filter:'+filterOf(pr2)+'">'
       + "<p class='small'>Foto dihitung browser dari master art lewat filter warna (hue/saturasi/brightness dari meta). Nuansanya bisa sedikit berbeda dari file PNG hue-shift yang tersimpan.</p>"
       + "<p>"+attrs+"</p>"
-      + "<p class='small'>Meta: <a href='"+META_BASE+id+".json'>meta/"+id+".json</a> · Gambar PNG (rencana, untuk tokenURI nanti): <a href='"+IMG_BASE+id+".png'>images/"+id+".png</a></p>";
+      + "<p class='small'>Meta: <a href='"+META_BASE+id+".json'>meta/"+id+".json</a> · Gambar JPG (rencana, untuk tokenURI nanti): <a href='"+IMG_BASE+id+".jpg'>images/"+id+".jpg</a></p>";
   }).catch(function(e){
     c.innerHTML = "<h3>Framlin #"+id+" · "+tier+"</h3><p>Meta tidak bisa dibaca: "+e.message+"</p><p class='small'>Coba lagi, atau buka langsung: <a href='"+META_BASE+id+".json'>meta/"+id+".json</a></p>";
   });

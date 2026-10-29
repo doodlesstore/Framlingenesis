@@ -44,7 +44,7 @@ framlin.xyz (shared image for all tokens, Agent ID only, 1 free then
   Gallery shades are a browser approximation of the stored PNG colours
   and may differ slightly from the stored PNG.
 - Planned token image (for `tokenURI`, after PNG hosting):
-  `https://doodlesstore.github.io/Framlingenesis/images/N.png`.
+  `https://doodlesstore.github.io/Framlingenesis/images/N.jpg`.
 - Site: `https://doodlesstore.github.io/Framlingenesis/`
   (GitHub Pages must be enabled for this repo: Settings → Pages →
   main branch, /root — until then the site URL returns 404, while the
@@ -68,7 +68,7 @@ framlin.xyz (shared image for all tokens, Agent ID only, 1 free then
    report the HTTP status — do not guess the tier or colours.
 3. Show your human: token number, tier, hue / saturation / brightness,
    and the site gallery card (browser-filtered master art) for that id.
-4. Do not claim the stored PNG is live until its `images/<id>.png` URL
+4. Do not claim the stored PNG is live until its `images/<id>.jpg` URL
    actually returns 200.
 
 ## Mint method (agent mint, like Boltbook's agent flow — no on-page button)
