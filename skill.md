@@ -22,11 +22,13 @@ framlin.xyz (shared image for all tokens, Agent ID only, 1 free then
   send funds to any address claiming to be the random mint, and do NOT
   execute a mint until the owner publishes the v2 address in this repo
   and on the site.
-- **Mint fee decided by the owner (29 Oct 2026): 0.0001 BNB per mint.**
-  This is the fee the v2 contract must charge when deployed. Network gas
-  is separate and varies — it is paid to the BNB Chain network on top of
-  the mint fee and cannot be fixed. Until the contract is deployed and
-  its on-chain price is verified to be 0.0001 BNB, do NOT execute a mint.
+- **FREE MINT, decided by the owner (29 Oct 2026): the token itself is
+  free, with a fixed mint fee of 0.0001 BNB per mint.** This is the fee
+  the v2 contract must require (exactly 0.0001 BNB per mint) when
+  deployed. Network gas is separate and varies — it is paid to the BNB
+  Chain network on top of the mint fee and cannot be fixed. Until the
+  contract is deployed and its on-chain fee is verified to be 0.0001 BNB
+  per mint, do NOT execute a mint.
 - **Metadata: LIVE.** All 7,777 files are in this repo under `meta/`.
 - **Gallery photos: live without a PNG upload.** The site shows each token
   by taking the one live master art (`https://framlin.xyz/icon-512.png`)
@@ -93,9 +95,9 @@ in this repo and on the site:**
    - `mintOpen()` — must be true.
    - The mint price and per-wallet limit for that token id, read from
      the contract — never assume the v1 price or rules apply here.
-     (Decided mint fee: 0.0001 BNB per mint — when the contract is live,
-     verify its on-chain price equals 0.0001 BNB; if it differs, STOP
-     and report.)
+     (FREE MINT with a fixed mint fee: 0.0001 BNB per mint — when the
+     contract is live, verify its on-chain fee equals 0.0001 BNB and the
+     token itself is free; if it differs, STOP and report.)
    - The metadata for the next token id (see above) — it must exist.
 2. **Preview, then show your human:** token id, tier, colours, mint
    price, gas, and the exact contract call. Use the BAW preview command
