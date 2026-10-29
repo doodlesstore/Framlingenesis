@@ -79,11 +79,11 @@ footer{border-top:1px solid #2a2a2a;margin-top:48px;padding-top:12px;font-size:1
 </div><div class="statcard">
 <img src="https://framlin.xyz/icon-512.png" alt="Framlin master art">
 <p class="small">COLLECTION</p><p class="bignum">7,777</p>
-<p class="small">META LIVE 7,777 · JPG LIVE 260 · MINT 0</p>
+<p class="small">META LIVE 7,777 · MINT BUKA · MINT 0</p>
 <p><a href="index.html">LIHAT GALERI →</a> · <a href="skill.md">SKILL.MD →</a></p>
 </div></section>
 
-<div class="status"><p><b>STATUS MINT, TERUS TERANG:</b> kontrak untuk koleksi ini <b>belum di-deploy</b> (deploy pertama), jadi mint belum bisa dipakai. <b>Jangan kirim dana ke alamat mana pun yang mengklaim sebagai mint koleksi ini</b> sampai alamat kontrak dipublikasikan di sini.</p></div>
+<div class="status"><p><b>STATUS MINT, TERUS TERANG:</b> kontrak NFT <b>live</b> <code>0x7eb1ff6afc5553a946bf4d27a7d132a59838ea4d</code>, token FRML <b>live</b> <code>0x0e06117f3c45bec68c77c480761022238ebe7e98</code>, mint <b>BUKA</b>. Fee: token gratis, 1–600: 0.0001 BNB, 601–7.777: 0.0002 BNB untuk creator + gas.</p></div>
 
 <h2 id="agent">MINT LEWAT AGENT.<br><span class="y">CARA UTAMA.</span></h2>
 <section class="steps"><div>
@@ -94,41 +94,39 @@ footer{border-top:1px solid #2a2a2a;margin-top:48px;padding-top:12px;font-size:1
 </div><div class="panel"><p class="small">STATUS MINT</p>
 <div class="row"><span><span class="dot">●</span> Skill.md</span><b>LIVE</b></div>
 <div class="row"><span><span class="dot">●</span> Meta 7,777</span><b>LIVE</b></div>
-<div class="row"><span><span class="y">○</span> JPG 260/7,777</span><b>DIJEDA</b></div>
-<div class="row"><span><span class="y">○</span> Kontrak</span><b>BELUM DEPLOY</b></div>
-<p class="small">Karena kontrak belum ada, langkah itu belum bisa dijalankan hari ini.</p>
+<div class="row"><span><span class="dot">●</span> Kontrak</span><b>BUKA</b></div>
 </div></section>
 
 <h2 id="token">MINT DAPAT <span class="y">TOKEN</span></h2>
 <div class="panel">
 <p>Mint NFT dapat <b>1.000 FRML</b> — setiap mint juga memberi token kepada minter.</p>
-<p class="small">Token Framlin (FRML) — 1.000 per mint, maksimal 7.777.000, hanya lewat mint NFT (minter = kontrak NFT). Token belum di-deploy — tidak ada token yang bisa diklaim atau diperjualbelikan hari ini. Deploy lewat <a href="deploy-token.html">deploy-token.html</a>; halaman ini diperbarui saat alamat token dipublikasikan dan terhubung ke kontrak NFT.</p>
+<p class="small">Token Framlin (FRML) — 1.000 per mint, maksimal 7.777.000, hanya lewat mint NFT (minter = kontrak NFT). Token live: <code>0x0e06117f3c45bec68c77c480761022238ebe7e98</code>, dikirim otomatis ke minter saat mint NFT.</p>
 </div>
 
-<h2 id="mint">MINT ON-PAGE <span class="y">(NANTI, SETELAH DEPLOY)</span></h2>
+<h2 id="mint">MINT ON-PAGE <span class="y">(LIVE)</span></h2>
 <div class="panel">
-<div class="row"><span>Kontrak</span><b id="contractLine">Belum di-deploy</b></div>
+<div class="row"><span>Kontrak</span><b id="contractLine">0x7eb1ff6afc5553a946bf4d27a7d132a59838ea4d</b></div>
 <div class="row"><span>Total koleksi</span><b>7,777</b></div>
 <div class="row"><span>Sudah di-mint</span><b id="mintedLine">—</b></div>
 <div class="row"><span>Mint buka?</span><b id="openLine">Belum</b></div>
-<div class="row"><span>Mint</span><b id="priceLine">FREE MINT bertingkat — token selalu gratis · 1–600: fee 0.0001 BNB untuk creator · 601–7.777: fee 0.0002 BNB untuk creator sampai supply habis (biaya bertingkat yang diputuskan, akan ditegakkan kontrak saat deploy; gas jaringan terpisah dan mengikuti jaringan BNB)</b></div>
-<div class="row"><span>Limit per wallet</span><b id="limitLine">10 per wallet (diputuskan)</b></div>
+<div class="row"><span>Mint</span><b id="priceLine">FREE MINT bertingkat — token selalu gratis · 1–600: fee 0.0001 BNB untuk creator · 601–7.777: fee 0.0002 BNB untuk creator sampai supply habis (gas jaringan terpisah dan mengikuti jaringan BNB)</b></div>
+<div class="row"><span>Limit per wallet</span><b id="limitLine">10 per wallet</b></div>
 <div class="row"><span>Syarat mint</span><b>Agent ID only — hanya wallet pemegang Agent ID Binance yang bisa mint</b></div>
 <div class="row"><span>Gambar token (JPG)</span><b>Live 260 / 7.777 (dijeda)</b></div>
 <p><button id="connectBtn">CONNECT WALLET (OKX DULU)</button> <span id="walletLine" class="small">Belum terhubung</span></p>
-<p>Jumlah: <select id="qtySelect" disabled><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="5">5</option><option value="10">10</option></select>
-<button id="mintBtn" disabled>MINT (BELUM BUKA)</button></p>
-<p id="mintStatus" class="small">Mint dibuka setelah kontrak di-deploy dan alamatnya diisi di sini. Sampai saat itu, tombol di atas sengaja nonaktif.</p>
+<p>Jumlah: <select id="qtySelect"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="5">5</option><option value="10">10</option></select>
+<button id="mintBtn">MINT</button></p>
+<p id="mintStatus" class="small">Mint buka. Hubungkan wallet (OKX dulu), pilih jumlah, lalu MINT — fee dibaca dari kontrak.</p>
 </div>
 
-<p class="small">Deploy NFT: <a href="deploy-nft.html">deploy-nft.html</a> — kontrak belum di-deploy. Deploy token: <a href="deploy-token.html">deploy-token.html</a>.</p>
+<p class="small">Kontrak NFT: <code>0x7eb1ff6afc5553a946bf4d27a7d132a59838ea4d</code> · Token FRML: <code>0x0e06117f3c45bec68c77c480761022238ebe7e98</code> · Deploy: <a href="deploy-nft.html">deploy-nft.html</a> / <a href="deploy-token.html">deploy-token.html</a>.</p>
 
-<h2 id="how">CARA KERJA MINT ACAK <span class="y">(NANTI)</span></h2>
+<h2 id="how">CARA KERJA MINT ACAK</h2>
 <ol>
 <li>Mint mengambil nomor berikutnya secara berurutan (totalMinted + 1) — bukan nomor acak yang dipilih di halaman.</li>
 <li>Nomor itu sudah punya metadata di repo ini (<code>meta/N.json</code>): tier, hue, saturasi, brightness — jadi warna dan tier token sudah pasti sebelum mint, tidak diundi ulang di kontrak.</li>
 <li>Gambar token di wallet/marketplace dibaca dari <code>tokenURI</code> → <code>images/N.jpg</code>. Galeri memakai filter browser, wallet tidak — upload JPG harus selesai sebelum mint dibuka penuh.</li>
-<li>Kontrak, saat di-deploy, diumumkan di sini — alamat, fee, dan limit dibaca dari kontrak.</li>
+<li>Kontrak live di sini — alamat, fee, dan limit dibaca dari kontrak.</li>
 </ol>
 <p class="small">Galeri acak: <a href="index.html">Framlin Genesis Random</a> · Meta: <code>https://raw.githubusercontent.com/doodlesstore/Framlingenesis/main/meta/N.json</code> · Gambar (JPG, bertahap): <code>https://doodlesstore.github.io/Framlingenesis/images/N.jpg</code></p>
 
@@ -136,8 +134,9 @@ footer{border-top:1px solid #2a2a2a;margin-top:48px;padding-top:12px;font-size:1
 
 <script>
 
-var CONTRACT = "";
-var MINT_PAUSED = true;
+var CONTRACT = "0x7eb1ff6afc5553a946bf4d27a7d132a59838ea4d";
+var MINT_PAUSED = false;
+var ACCOUNT = "";
 var RPC = "https://bsc-dataseed.bnbchain.org";
 function hexToInt(h){ return parseInt(h, 16); }
 function callData(to, data){
@@ -162,14 +161,58 @@ document.getElementById("connectBtn").onclick = function(){
   var p = getProvider();
   if (!p) { document.getElementById("walletLine").textContent = "Wallet tidak ditemukan — buka halaman ini di dApp browser OKX / MetaMask."; return; }
   p.request({method:"eth_requestAccounts"}).then(function(accs){
+    ACCOUNT = accs[0];
     document.getElementById("walletLine").textContent = "Terhubung: " + accs[0];
     return p.request({method:"wallet_switchEthereumChain", params:[{chainId:"0x38"}]}).catch(function(){
       return p.request({method:"wallet_addEthereumChain", params:[{chainId:"0x38", chainName:"BNB Smart Chain", nativeCurrency:{name:"BNB", symbol:"BNB", decimals:18}, rpcUrls:[RPC], blockExplorerUrls:["https://bscscan.com"]}]});
     });
   }).catch(function(e){ document.getElementById("walletLine").textContent = "Gagal terhubung: " + (e && e.message ? e.message : e); });
 };
+function padQty(q){ var h = q.toString(16); return "0".repeat(64 - h.length) + h; }
 document.getElementById("mintBtn").onclick = function(){
-  document.getElementById("mintStatus").textContent = "Mint belum buka: kontrak belum di-deploy. Tombol ini sengaja nonaktif sampai alamat kontrak diisi dan status diubah menjadi buka.";
+  var statusEl = document.getElementById("mintStatus");
+  var p = getProvider();
+  if (!p) { statusEl.textContent = "Wallet tidak ditemukan — buka halaman ini di dApp browser OKX / MetaMask."; return; }
+  if (!ACCOUNT) { statusEl.textContent = "Hubungkan wallet dulu (tombol CONNECT WALLET)."; return; }
+  var qty = parseInt(document.getElementById("qtySelect").value, 10) || 1;
+  statusEl.textContent = "Memeriksa token + fee dari kontrak...";
+  callData(CONTRACT, "0xfc0c546a").then(function(tok){
+    if (tok && /^0x0{40}$/.test(tok)) { throw new Error("TOKEN_ZERO"); }
+    return callData(CONTRACT, "0xcd5e0bde" + padQty(qty));
+  }, function(){
+    return callData(CONTRACT, "0xcd5e0bde" + padQty(qty));
+  }).then(function(feeHex){
+    if (feeHex) return feeHex;
+    return callData(CONTRACT, "0xda3c300d").then(function(cf){
+      var v = parseInt(cf, 16) * qty;
+      return "0x" + v.toString(16);
+    });
+  }).then(function(feeHex){
+    statusEl.textContent = "Mengirim transaksi mint (" + qty + "x)... konfirmasi di wallet.";
+    return p.request({method:"eth_sendTransaction", params:[{from: ACCOUNT, to: CONTRACT, value: feeHex, data: "0xa0712d68" + padQty(qty)}]});
+  }).then(function(txHash){
+    if (!txHash) return;
+    statusEl.innerHTML = "Transaksi dikirim: <a href=\"https://bscscan.com/tx/" + txHash + "\">" + txHash + "</a> — menunggu konfirmasi...";
+    var tries = 0;
+    var timer = setInterval(function(){
+      fetch(RPC, {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({jsonrpc:"2.0", id:1, method:"eth_getTransactionReceipt", params:[txHash]})}).then(function(r){ return r.json(); }).then(function(j){
+        if (j.result) {
+          clearInterval(timer);
+          statusEl.innerHTML = (j.result.status === "0x1" ? "Mint BERHASIL. " : "Transaksi GAGAL di chain. ") + "<a href=\"https://bscscan.com/tx/" + txHash + "\">Lihat di BscScan</a>";
+          refreshContract();
+        } else if (++tries > 40) {
+          clearInterval(timer);
+          statusEl.innerHTML = "Transaksi belum terkonfirmasi setelah menunggu — cek <a href=\"https://bscscan.com/tx/" + txHash + "\">BscScan</a>.";
+        }
+      }).catch(function(){});
+    }, 3000);
+  }).catch(function(e){
+    if (e && e.message === "TOKEN_ZERO") {
+      statusEl.textContent = "Mint ditahan: alamat token di kontrak NFT masih kosong — owner harus menjalankan setToken dulu.";
+    } else {
+      statusEl.textContent = "Mint gagal / dibatalkan: " + (e && e.message ? e.message : e);
+    }
+  });
 };
 refreshContract();
 

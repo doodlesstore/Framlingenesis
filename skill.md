@@ -1,7 +1,7 @@
 ---
 name: framlin-random
 version: 0.1
-description: Framlin Genesis Random — 7,777 hue-shift Framlins on BNB Chain. Agent guide: browse the random gallery, and (once the contract is deployed) mint through your own wallet, preview first, execute only after your human says yes.
+description: Framlin Genesis Random — 7,777 hue-shift Framlins on BNB Chain. Agent guide: browse the random gallery, and mint through your own wallet (contract live, mint open), preview first, execute only after your human says yes.
 homepage: https://doodlesstore.github.io/Framlingenesis/
 repo: https://github.com/doodlesstore/Framlingenesis
 ---
@@ -16,36 +16,38 @@ earlier version of it.
 
 ## Status — read this first
 
-- **Contract for this collection: NOT DEPLOYED YET — this will be its first deployment.** There is no
-  contract address yet. Per-wallet limit decided: 10 per wallet.
-  Gate decided: Agent ID only (Binance Agent ID registry
+- **Contract for this collection: LIVE, mint OPEN.** NFT contract
+  (Framlin Genesis Random / FRAMR):
+  `0x7eb1ff6afc5553a946bf4d27a7d132a59838ea4d`, deployed code verified
+  byte-for-byte against the compiled contract. Token contract
+  (Framlin / FRML):
+  `0x0e06117f3c45bec68c77c480761022238ebe7e98`, also verified
+  byte-for-byte. Mint was opened on-chain with `setMintOpen(true)`
+  (block 130495658, Success); token minter was set to the NFT contract
+  (block 130495181, Success). Per-wallet limit: 10 per wallet.
+  Gate: Agent ID only (Binance Agent ID registry
   0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F). Do NOT
-  invent a contract address, do NOT
-  send funds to any address claiming to be the random mint, and do NOT
-  execute a mint until the owner publishes the contract address in this repo
-  and on the site.
-- **Deploy pages ready (contracts NOT deployed yet):** NFT deploy page
-  `deploy-nft.html` (Framlin Genesis Random / FRAMR, all decided rules
-  enforced) and token deploy page `deploy-token.html` (Framlin / FRML).
-  Deploy order: token first (or NFT with a zero token, then `setToken`),
-  then point the token minter at the NFT contract, verify both directions
-  (token minter == NFT, NFT token == token), and only then open mint
-  (`setMintOpen(true)`). Mint stays closed by default in the contract.
+  invent a contract address and do NOT
+  send funds to any address other than the NFT address above; always
+  re-check the address on BscScan and read live values before executing.
+- **Deploy pages (already used):** NFT deploy page
+  `deploy-nft.html` and token deploy page `deploy-token.html`.
+  Wiring done: token minter == NFT contract, mint opened with
+  `setMintOpen(true)`.
 - **FREE MINT with tiered creator fees, decided by the owner
   (29 Oct 2026): the token itself is always free; the creator fee is
   0.0001 BNB for mints 1–600 and 0.0002 BNB for mints 601–7777 until
   the supply is exhausted.** The contract must enforce
   these tiers exactly. Network gas is separate and varies — it is paid
   to the BNB Chain network on top of the creator fee and cannot be
-  fixed. Until the contract is deployed and its on-chain fee tiers are
-  verified, do NOT execute a mint.
+  fixed. The contract is live: verify its on-chain fee for the current
+  tier before executing; if it differs, STOP and report.
 - **Token reward: Framlin (FRML) — 1,000 FRML per NFT mint, max supply
   7,777,000, mintable only by the NFT contract (minter). Token contract
-  NOT deployed yet: do NOT promise, price, claim, or distribute any token
-  until the owner deploys it via `deploy-token.html`, publishes the token
-  address, and points its minter at the NFT contract. The future NFT
-  contract must call `token.mint(minter, 1000 ether)` on every mint;
-  until both contracts are deployed and wired, no token exists to claim.
+  LIVE: `0x0e06117f3c45bec68c77c480761022238ebe7e98`. The NFT
+  contract calls `token.mint(minter, 1000 ether)` on every mint, so FRML
+  is sent automatically to the minter. Do NOT promise FRML outside of
+  minting.
 - **Metadata: LIVE.** All 7,777 files are in this repo under `meta/`.
 - **Gallery photos: live without a PNG upload.** The site shows each token
   by taking the one live master art (`https://framlin.xyz/icon-512.png`)
@@ -54,7 +56,7 @@ earlier version of it.
   needed later as the `tokenURI` images for wallets and marketplaces,
   because those read the image URL directly and do not apply the site's
   filter.
-- **This contract, when deployed, is unaudited.** Say so to your human.
+- **This contract is unaudited.** Say so to your human.
   Test with small amounts first.
 
 ## Files
@@ -70,10 +72,7 @@ earlier version of it.
 - Planned token image (for `tokenURI`, after PNG hosting):
   `https://doodlesstore.github.io/Framlingenesis/images/N.jpg`.
 - Site: `https://doodlesstore.github.io/Framlingenesis/`
-- Mint page: `https://doodlesstore.github.io/Framlingenesis/mint.html` (mint button is disabled until the contract address is filled in and the page is switched to open — do not treat it as live minting).
-  (GitHub Pages must be enabled for this repo: Settings → Pages →
-  main branch, /root — until then the site URL returns 404, while the
-  raw metadata above still works).
+- Mint page: `https://doodlesstore.github.io/Framlingenesis/mint.html` (live, mint button enabled, mintOpen true on-chain).
 
 ## Tiers (from the real metadata, exact)
 
@@ -102,8 +101,9 @@ Minting happens from your own wallet, through the Binance Agentic Wallet
 (BAW) CLI — never through a button
 on this page, and never from a seed phrase or private key pasted anywhere.
 
-**Only after the contract is deployed and its address is published
-in this repo and on the site:**
+**Contract is live and published in this repo and on the site
+(NFT `0x7eb1ff6afc5553a946bf4d27a7d132a59838ea4d`,
+token `0x0e06117f3c45bec68c77c480761022238ebe7e98`):**
 
 1. **Check first, and STOP at the first failed check:**
    - The contract address, copied from the repo/site (never from a
