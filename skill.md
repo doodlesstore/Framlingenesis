@@ -24,6 +24,13 @@ earlier version of it.
   send funds to any address claiming to be the random mint, and do NOT
   execute a mint until the owner publishes the contract address in this repo
   and on the site.
+- **Deploy pages ready (contracts NOT deployed yet):** NFT deploy page
+  `deploy-nft.html` (Framlin Genesis Random / FRAMR, all decided rules
+  enforced) and token deploy page `deploy-token.html` (Framlin / FRML).
+  Deploy order: token first (or NFT with a zero token, then `setToken`),
+  then point the token minter at the NFT contract, verify both directions
+  (token minter == NFT, NFT token == token), and only then open mint
+  (`setMintOpen(true)`). Mint stays closed by default in the contract.
 - **FREE MINT with tiered creator fees, decided by the owner
   (29 Oct 2026): the token itself is always free; the creator fee is
   0.0001 BNB for mints 1–600 and 0.0002 BNB for mints 601–7777 until
