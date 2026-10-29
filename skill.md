@@ -29,11 +29,13 @@ earlier version of it.
   to the BNB Chain network on top of the creator fee and cannot be
   fixed. Until the contract is deployed and its on-chain fee tiers are
   verified, do NOT execute a mint.
-- **Token reward (planned, NOT deployed):** minting will also earn tokens,
-  but the token contract is NOT deployed yet and no token name, amount per
-  mint, or total supply has been decided. Do NOT promise, price, claim,
-  or distribute any token until the owner publishes the token contract;
-  the token deploy will be built later.
+- **Token reward: Framlin (FRML) — 1,000 FRML per NFT mint, max supply
+  7,777,000, mintable only by the NFT contract (minter). Token contract
+  NOT deployed yet: do NOT promise, price, claim, or distribute any token
+  until the owner deploys it via `deploy-token.html`, publishes the token
+  address, and points its minter at the NFT contract. The future NFT
+  contract must call `token.mint(minter, 1000 ether)` on every mint;
+  until both contracts are deployed and wired, no token exists to claim.
 - **Metadata: LIVE.** All 7,777 files are in this repo under `meta/`.
 - **Gallery photos: live without a PNG upload.** The site shows each token
   by taking the one live master art (`https://framlin.xyz/icon-512.png`)
