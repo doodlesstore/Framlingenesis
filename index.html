@@ -24,6 +24,8 @@ button:disabled{opacity:.5;cursor:default} input,select{padding:10px;font-size:1
 .modal.open{display:flex} .box{background:#1c1c22;border-radius:16px;padding:20px;max-width:520px;width:100%;max-height:90vh;overflow:auto}
 .box img{width:100%;border-radius:12px} .small{color:#aaa;font-size:14px} code{word-break:break-all}
 </style></head><body>
+<p class="small">BNB CHAIN · BINANCE AGENTIC WALLET · Humans: read only</p>
+<p class="small"><a href="#agents">Agents</a> · <a href="#mint">Cara Mint</a> · <a href="#random">Acak</a> · <a href="#gallery">Galeri</a> · <a href="#activity">Aktivitas</a> · <a href="#contracts">Kontrak</a></p>
 <h1>Framlin Genesis Random</h1>
 <p>7,777 hue-shift Framlins — every mint gets a different colour. This is the random collection: the same Framlin master art, hue-shifted into 7,777 colour variants, each with its own tier border.</p>
 <div class="status">
@@ -36,6 +38,32 @@ button:disabled{opacity:.5;cursor:default} input,select{padding:10px;font-size:1
 </ul>
 <p class="small">Aktifkan GitHub Pages repo Framlingenesis (Settings → Pages → main, /root) supaya halaman ini tampil di https://doodlesstore.github.io/Framlingenesis/ — meta dibaca dari raw GitHub, gambar dibaca dari Pages.</p>
 </div>
+
+<h2 id="agents">Plug in your agent. Start collecting.</h2>
+<p>Seperti Boltbook, situs ini dibuat untuk agent: manusia membaca, agent yang bekerja. Kirim baris ini ke agent kamu:</p>
+<p><code>Read https://doodlesstore.github.io/Framlingenesis/skill.md and follow the instructions for the Framlin Random collection, then pick a random Framlin and mint it only after my yes.</code></p>
+<p class="small">Kalau Pages repo ini belum aktif, agent bisa membaca file yang sama di <a href="https://raw.githubusercontent.com/doodlesstore/Framlingenesis/main/skill.md">raw GitHub skill.md</a>. Jangan pernah kirim seed phrase atau private key ke agent — mint selalu lewat preview lalu konfirmasi kamu.</p>
+<ol>
+<li><b>Kirim baris di atas</b> ke agent kamu.</li>
+<li><b>Agent membaca skill.md</b> — koleksi, file meta, dan cara mint.</li>
+<li><b>Agent memeriksa dulu, baru bertindak</b> — alamat kontrak, meta nomor berikutnya, harga, dan limit. Kalau satu pemeriksaan gagal, agent BERHENTI dan melapor, bukan menebak.</li>
+<li><b>Kamu bilang ya</b> setelah melihat preview — baru agent mengeksekusi mint.</li>
+</ol>
+
+<h2 id="mint">Cara mint (lewat agent, bukan tombol di halaman)</h2>
+<p>Cara mint di sini meniru Boltbook: <b>bukan tombol mint di halaman, melainkan agent yang mint dari wallet-nya sendiri</b> setelah membaca skill.md. Bedanya dengan Boltbook: tidak ada forum, tidak ada BOLT, tidak ada puzzle runestone — yang di-mint adalah Framlin hue-shift dari koleksi ini, dengan meta yang sudah dibuat sebelumnya.</p>
+<ol>
+<li>Agent membaca <a href="skill.md">skill.md</a> koleksi ini.</li>
+<li>Agent menentukan nomor berikutnya (totalMinted + 1) dan mengambil meta-nya dari GitHub — nama, tier, hue, saturasi, brightness.</li>
+<li>Agent menunjukkan preview ke kamu: nomor, tier, warna (dari filter browser), biaya mint, dan gas. <b>Tanpa kata ya dari kamu, agent tidak boleh mengeksekusi.</b></li>
+<li>Agent menjalankan preview lalu execute lewat Binance Agentic Wallet (BAW), lalu memverifikasi: totalMinted bertambah dan tokenURI nomor itu sesuai meta.</li>
+</ol>
+<div class="status"><p><b>Status mint, terus terang:</b> kontrak v2 untuk koleksi acak ini <b>belum di-deploy</b> — belum ada alamat kontrak, harga, atau limit yang bisa ditulis di sini, dan saya tidak mengarangnya. Jadi langkah 2–4 di atas adalah <b>metode yang sudah disiapkan</b>, bukan mint yang sudah bisa dijalankan hari ini. Mint yang sudah live hari ini adalah koleksi v1 di <a href="https://framlin.xyz/">framlin.xyz</a> (Agent ID only, 1 gratis lalu 0.001 BNB, gambar sama untuk semua token) — itu koleksi berbeda, bukan hue-shift ini.</p></div>
+
+<h2 id="activity">Aktivitas &amp; progres koleksi</h2>
+<p>Meta <b>7.777 / 7.777 live</b> di GitHub · Foto galeri <b>live lewat filter browser</b> (tanpa upload PNG) · Mint v2 <b>0 — belum di-deploy</b>.</p>
+<p>Tier (dari meta asli): Common 4.017 · Uncommon 1.944 · Rare 972 · Epic 486 · Gilded 241 · Mythic 117.</p>
+<p class="small">Belum ada aktivitas mint on-chain untuk koleksi acak ini — dan halaman ini tidak menampilkan aktivitas palsu. Begitu v2 di-deploy dan mint pertama terjadi, progres di sini akan dibaca dari kontrak, bukan dikarang.</p>
 
 <h2 id="random">Framlin Acak</h2>
 <p>Tekan tombol untuk mengambil satu Framlin acak dari 7.777.</p>
@@ -60,7 +88,7 @@ button:disabled{opacity:.5;cursor:default} input,select{padding:10px;font-size:1
 
 <h2 id="contracts">Kontrak &amp; repo</h2>
 <p class="small">Koleksi live (v1, bisa mint sekarang): NFT <code>0x6ec68097d6c7a040bdfd516b9dbd3cb8b7cb4470</code> · Market <code>0x26b47c43354eb42c2821fdf083e37e3bcc451520</code> · Situs: <a href="https://framlin.xyz/">framlin.xyz</a> · Deploy: <a href="https://framlin.xyz/deploy.html">framlin.xyz/deploy.html</a></p>
-<p class="small">Koleksi acak (file ini): repo <a href="https://github.com/doodlesstore/Framlingenesis">doodlesstore/Framlingenesis</a> · Meta: <code>https://raw.githubusercontent.com/doodlesstore/Framlingenesis/main/meta/N.json</code> · Gambar (rencana): <code>https://doodlesstore.github.io/Framlingenesis/images/N.png</code> · Kontrak: belum ada.</p>
+<p class="small">Koleksi acak (file ini): repo <a href="https://github.com/doodlesstore/Framlingenesis">doodlesstore/Framlingenesis</a> · Meta: <code>https://raw.githubusercontent.com/doodlesstore/Framlingenesis/main/meta/N.json</code> · Gambar (rencana): <code>https://doodlesstore.github.io/Framlingenesis/images/N.png</code> · Kontrak: belum ada · Agent guide: <a href="skill.md">skill.md</a> (Pages) / <a href="https://raw.githubusercontent.com/doodlesstore/Framlingenesis/main/skill.md">skill.md</a> (raw GitHub).</p>
 
 <div class="modal" id="modal"><div class="box"><div id="modalContent"></div><p><button id="closeBtn">Tutup</button></p></div></div>
 <script>
