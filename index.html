@@ -30,7 +30,7 @@ button:disabled{opacity:.5;cursor:default} input,select{padding:10px;font-size:1
 <p><b>Status, terus terang:</b></p>
 <ul>
 <li>Meta 1–7.777: <b>live</b> di GitHub (doodlesstore/Framlingenesis, folder <code>meta/</code>).</li>
-<li>Gambar PNG 1–7.777: <b>belum ter-upload ke web</b> (total 3,5 GB, file biner tidak bisa lewat connector GitHub). Kartu yang gambarnya belum ter-upload tampil sebagai placeholder sampai PNG-nya ter-host — tanpa perlu mengubah halaman ini lagi.</li>
+<li>Gambar galeri: <b>ditampilkan otomatis tanpa upload PNG</b> — halaman ini mengambil satu master art yang sudah live (<code>framlin.xyz/icon-512.png</code>) lalu browser mengubah warnanya per nomor lewat filter CSS (<code>hue-rotate / saturate / brightness</code> sesuai atribut meta). Jadi semua 7.777 kartu sudah berfoto sekarang, tanpa menunggu upload 3,5 GB. File PNG tetap diperlukan nanti untuk gambar NFT di wallet/marketplace setelah mint v2, karena marketplace membaca <code>tokenURI</code> langsung, bukan filter situs ini.</li>
 <li>Kontrak v2 untuk koleksi acak ini: <b>belum di-deploy</b>, jadi halaman ini belum bisa mint. Jangan kirim dana ke siapa pun yang mengklaim mint random sudah buka.</li>
 <li>Koleksi live yang sudah bisa di-mint tetap di <a href="https://framlin.xyz/">framlin.xyz</a> (kontrak v1, tidak dibatalkan, tidak diubah oleh halaman ini).</li>
 </ul>
@@ -53,7 +53,7 @@ button:disabled{opacity:.5;cursor:default} input,select{padding:10px;font-size:1
 <h2 id="how">Cara kerja file-file ini</h2>
 <ol>
 <li><b>Meta:</b> tiap nomor punya satu file JSON di <code>meta/N.json</code> di repo Framlingenesis — nama, deskripsi, link gambar, dan atribut (Tier, Hue shift, Saturation, Brightness, Style).</li>
-<li><b>Gambar:</b> tiap nomor punya satu PNG di <code>images/N.png</code> (hue-shift dari master art framlin.xyz/icon-512.png). Begitu PNG ter-upload ke Pages, semua kartu di halaman ini otomatis menampilkan fotonya — tidak perlu edit HTML lagi.</li>
+<li><b>Gambar (tanpa upload):</b> galeri tidak menunggu file PNG. Browser mengambil satu master art (<code>framlin.xyz/icon-512.png</code>, sudah live) dan menerapkan filter warna per nomor — hue, saturasi, dan brightness yang sama dengan yang dipakai saat generate PNG (tersimpan di atribut meta). Warna yang tampil di galeri adalah hasil hitungan browser, jadi nuansanya bisa sedikit berbeda dari file PNG hue-shift yang tersimpan. File PNG di <code>images/N.png</code> tetap diperlukan nanti sebagai gambar <code>tokenURI</code> untuk wallet/marketplace setelah mint v2.</li>
 <li><b>Acak:</b> urutan galeri dan tombol Acak memakai angka acak di browser. Tier tiap nomor sudah ditentukan saat generate (Common 4.017, Uncommon 1.944, Rare 972, Epic 486, Gilded 241, Mythic 117) dan tersimpan di meta, bukan diundi ulang di halaman ini.</li>
 <li><b>Mint (nanti):</b> butuh kontrak v2 dengan baseURI ke meta ini, lalu deploy + ganti halaman ini ke alamat kontrak itu. Sampai saat itu, halaman ini hanya galeri, bukan mint.</li>
 </ol>
@@ -69,13 +69,22 @@ var TIER_NAMES = {C:"Common", U:"Uncommon", R:"Rare", E:"Epic", G:"Gilded", M:"M
 var TIER_COLORS = {Common:"#888888", Uncommon:"#2ee6a8", Rare:"#3b82f6", Epic:"#a855f7", Gilded:"#f5c542", Mythic:"#f5c542"};
 var META_BASE = "https://raw.githubusercontent.com/doodlesstore/Framlingenesis/main/meta/";
 var IMG_BASE = "https://doodlesstore.github.io/Framlingenesis/images/";
+var MASTER_IMG = "https://framlin.xyz/icon-512.png";
+var SAT_LEVELS = [0.75, 0.9, 1.0, 1.1, 1.25, 1.4];
+var BRIGHT_LEVELS = [0.85, 1.0, 1.15, 1.3];
+function paramsOf(id){
+  var n = id - 1, p = (n * 7919) % 7777;
+  return { hue: p % 360, sat: SAT_LEVELS[Math.floor(p/360) % 6], bright: BRIGHT_LEVELS[Math.floor(p/2160) % 4] };
+}
+function filterOf(pr){ return "hue-rotate("+pr.hue+"deg) saturate("+pr.sat+") brightness("+pr.bright+")"; }
 function tierOf(id){ return TIER_NAMES[TIERS[id-1]]; }
 function cardHTML(id){
   var tier = tierOf(id);
   var color = TIER_COLORS[tier] || "#888";
+  var pr = paramsOf(id);
   return '<div class="card" data-id="'+id+'" style="border-color:'+color+'">'
-    + '<img src="'+IMG_BASE+id+'.png" alt="Framlin #'+id+'" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';">'
-    + '<div class="ph" style="display:none;border:2px solid '+color+'">Gambar belum ter-upload<br>#'+id+' · '+tier+'</div>'
+    + '<img src="'+MASTER_IMG+'" alt="Framlin #'+id+'" loading="lazy" style="filter:'+filterOf(pr)+'">'
+    + '<div class="ph" style="display:none;border:2px solid '+color+'">Gambar gagal dimuat<br>#'+id+' · '+tier+'</div>'
     + '<div><b>#'+id+'</b><br><span class="tag" style="border:1px solid '+color+'">'+tier+'</span></div></div>';
 }
 var order = [];
@@ -118,11 +127,14 @@ function showDetail(id){
   m.classList.add("open");
   fetch(META_BASE+id+".json").then(function(r){ if(!r.ok) throw new Error("Meta HTTP "+r.status); return r.json(); }).then(function(meta){
     var attrs = (meta.attributes||[]).map(function(a){ return a.trait_type+": "+a.value; }).join(" · ");
+    var attrMap = {}; (meta.attributes||[]).forEach(function(a){ attrMap[a.trait_type]=a.value; });
+    var pr2 = { hue: attrMap["Hue shift"], sat: attrMap["Saturation"], bright: attrMap["Brightness"] };
+    if (pr2.hue === undefined) pr2 = paramsOf(id);
     c.innerHTML = "<h3>"+meta.name+" · "+tier+"</h3>"
-      + '<img src="'+IMG_BASE+id+'.png" alt="Framlin #'+id+'" onerror="this.style.display=\'none\';">'
-      + "<p class='small'>Gambar belum ter-upload ke Pages? Kartu di atas akan kosong sampai PNG ter-host — meta di bawah ini sudah live.</p>"
+      + '<img src="'+MASTER_IMG+'" alt="Framlin #'+id+'" style="filter:'+filterOf(pr2)+'">'
+      + "<p class='small'>Foto dihitung browser dari master art lewat filter warna (hue/saturasi/brightness dari meta). Nuansanya bisa sedikit berbeda dari file PNG hue-shift yang tersimpan.</p>"
       + "<p>"+attrs+"</p>"
-      + "<p class='small'>Meta: <a href='"+META_BASE+id+".json'>meta/"+id+".json</a> · Gambar (rencana): <a href='"+IMG_BASE+id+".png'>images/"+id+".png</a></p>";
+      + "<p class='small'>Meta: <a href='"+META_BASE+id+".json'>meta/"+id+".json</a> · Gambar PNG (rencana, untuk tokenURI nanti): <a href='"+IMG_BASE+id+".png'>images/"+id+".png</a></p>";
   }).catch(function(e){
     c.innerHTML = "<h3>Framlin #"+id+" · "+tier+"</h3><p>Meta tidak bisa dibaca: "+e.message+"</p><p class='small'>Coba lagi, atau buka langsung: <a href='"+META_BASE+id+".json'>meta/"+id+".json</a></p>";
   });
