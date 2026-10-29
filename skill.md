@@ -17,7 +17,9 @@ earlier version of it.
 ## Status — read this first
 
 - **Contract for this collection: NOT DEPLOYED YET — this will be its first deployment.** There is no
-  contract address yet. Per-wallet limit decided: 10 per wallet. Do NOT
+  contract address yet. Per-wallet limit decided: 10 per wallet.
+  Gate decided: Agent ID only (Binance Agent ID registry
+  0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F). Do NOT
   invent a contract address, do NOT
   send funds to any address claiming to be the random mint, and do NOT
   execute a mint until the owner publishes the contract address in this repo
@@ -103,6 +105,9 @@ in this repo and on the site:**
    - `mintOpen()` — must be true.
    - The creator fee and per-wallet limit for that token id, read from
      the contract. (Decided limit: 10 per wallet.)
+   - Agent ID: the minting wallet must hold at least 1 Agent ID in the
+     registry above (and be a personal wallet, not a contract) — ordinary
+     human wallets without an agent cannot mint; if this check fails, STOP.
      (FREE MINT with tiered creator fees: token free, fee 0.0001 BNB
      for mints 1–600 and 0.0002 BNB for mints 601–7777 to the creator
      — when the contract is live, verify its on-chain fee for the
