@@ -83,7 +83,7 @@ footer{border-top:1px solid #2a2a2a;margin-top:48px;padding-top:12px;font-size:1
 <p><a href="index.html">LIHAT GALERI →</a> · <a href="skill.md">SKILL.MD →</a></p>
 </div></section>
 
-<div class="status"><p><b>STATUS MINT, TERUS TERANG:</b> kontrak untuk koleksi ini <b>belum di-deploy</b> — ini adalah deploy pertamanya — jadi mint belum bisa dipakai, bukan karena error, melainkan karena belum ada alamat kontrak atau limit yang bisa ditulis di sini, dan halaman ini tidak mengarangnya. <b>Jangan kirim dana ke alamat mana pun yang mengklaim sebagai mint koleksi ini</b> sampai alamat kontrak dipublikasikan di repo ini dan di halaman ini.</p></div>
+<div class="status"><p><b>STATUS MINT, TERUS TERANG:</b> kontrak untuk koleksi ini <b>belum di-deploy</b> (deploy pertama), jadi mint belum bisa dipakai. <b>Jangan kirim dana ke alamat mana pun yang mengklaim sebagai mint koleksi ini</b> sampai alamat kontrak dipublikasikan di sini.</p></div>
 
 <h2 id="agent">MINT LEWAT AGENT.<br><span class="y">CARA UTAMA.</span></h2>
 <section class="steps"><div>
@@ -96,7 +96,7 @@ footer{border-top:1px solid #2a2a2a;margin-top:48px;padding-top:12px;font-size:1
 <div class="row"><span><span class="dot">●</span> Meta 7,777</span><b>LIVE</b></div>
 <div class="row"><span><span class="y">○</span> JPG 260/7,777</span><b>DIJEDA</b></div>
 <div class="row"><span><span class="y">○</span> Kontrak</span><b>BELUM DEPLOY</b></div>
-<p class="small">Langkah 2–4 di atas adalah metode yang sudah disiapkan di skill.md. Karena kontrak belum ada, langkah itu belum bisa dijalankan hari ini — skill.md dengan jelas menulis begitu, supaya tidak ada agent yang menebak alamat atau harga.</p>
+<p class="small">Karena kontrak belum ada, langkah itu belum bisa dijalankan hari ini.</p>
 </div></section>
 
 <h2 id="mint">MINT ON-PAGE <span class="y">(NANTI, SETELAH DEPLOY)</span></h2>
@@ -107,19 +107,19 @@ footer{border-top:1px solid #2a2a2a;margin-top:48px;padding-top:12px;font-size:1
 <div class="row"><span>Mint buka?</span><b id="openLine">Belum</b></div>
 <div class="row"><span>Mint</span><b id="priceLine">FREE MINT bertingkat — token selalu gratis · 1–600: fee 0.0001 BNB untuk creator · 601–7.777: fee 0.0002 BNB untuk creator sampai supply habis (biaya bertingkat yang diputuskan, akan ditegakkan kontrak saat deploy; gas jaringan terpisah dan mengikuti jaringan BNB)</b></div>
 <div class="row"><span>Limit per wallet</span><b id="limitLine">— (ditentukan saat deploy)</b></div>
-<div class="row"><span>Gambar token (JPG)</span><b>Live 260 / 7.777 per 29 Okt 2026 malam — bertambah saat upload dilanjutkan</b></div>
+<div class="row"><span>Gambar token (JPG)</span><b>Live 260 / 7.777 (dijeda)</b></div>
 <p><button id="connectBtn">CONNECT WALLET (OKX DULU)</button> <span id="walletLine" class="small">Belum terhubung</span></p>
 <p>Jumlah: <select id="qtySelect" disabled><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="5">5</option><option value="10">10</option></select>
 <button id="mintBtn" disabled>MINT (BELUM BUKA)</button></p>
-<p id="mintStatus" class="small">Mint dibuka dengan cara: deploy kontrak, isi alamatnya di halaman ini, dan ubah status menjadi buka — tanpa mengubah struktur halaman ini. Sampai saat itu, tombol di atas sengaja nonaktif.</p>
+<p id="mintStatus" class="small">Mint dibuka setelah kontrak di-deploy dan alamatnya diisi di sini. Sampai saat itu, tombol di atas sengaja nonaktif.</p>
 </div>
 
 <h2 id="how">CARA KERJA MINT ACAK <span class="y">(NANTI)</span></h2>
 <ol>
 <li>Mint mengambil nomor berikutnya secara berurutan (totalMinted + 1) — bukan nomor acak yang dipilih di halaman.</li>
 <li>Nomor itu sudah punya metadata di repo ini (<code>meta/N.json</code>): tier, hue, saturasi, brightness — jadi warna dan tier token sudah pasti sebelum mint, tidak diundi ulang di kontrak.</li>
-<li>Gambar token di wallet/marketplace dibaca dari <code>tokenURI</code> → <code>images/N.jpg</code> di repo ini. Galeri situs menampilkan foto lewat filter browser dari satu master art, tapi wallet tidak memakai filter itu — karena itu upload JPG harus selesai sebelum mint acak dibuka penuh.</li>
-<li>Kontrak, saat di-deploy, akan diumumkan di repo ini dan di halaman ini — alamat, harga, dan limit dibaca langsung dari kontrak, bukan dikarang di halaman.</li>
+<li>Gambar token di wallet/marketplace dibaca dari <code>tokenURI</code> → <code>images/N.jpg</code>. Galeri memakai filter browser, wallet tidak — upload JPG harus selesai sebelum mint dibuka penuh.</li>
+<li>Kontrak, saat di-deploy, diumumkan di sini — alamat, fee, dan limit dibaca dari kontrak.</li>
 </ol>
 <p class="small">Galeri acak: <a href="index.html">Framlin Genesis Random</a> · Meta: <code>https://raw.githubusercontent.com/doodlesstore/Framlingenesis/main/meta/N.json</code> · Gambar (JPG, bertahap): <code>https://doodlesstore.github.io/Framlingenesis/images/N.jpg</code></p>
 
