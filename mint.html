@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#050505"><link rel="apple-touch-icon" href="icon-192.png">
 <title>Mint Framlin Random · 7,777 Hue-Shift</title>
 <meta name="description" content="Mint Framlin Genesis Random — 7,777 hue-shift Framlins on BNB Chain. Mint opens when the contract is deployed.">
 <meta property="og:type" content="website">
@@ -73,7 +73,7 @@ footer{border-top:1px solid #2a2a2a;margin-top:48px;padding-top:12px;font-size:1
 <li>Tier dan warna sudah pasti dari metadata nomor itu, bukan diundi ulang.</li>
 <li>FREE MINT bertingkat — token gratis, fee 0.0001 BNB untuk 600 mint pertama, lalu 0.0002 BNB untuk sisanya sampai supply habis, semua untuk creator.</li>
 <li>Cara mint utama: lewat agent (skill.md) — cek dulu, preview, baru eksekusi.</li>
-<li>Tombol on-page di bawah hanya aktif setelah kontrak di-deploy.</li>
+<li>Tombol on-page di bawah sudah aktif — hubungkan wallet lalu MINT.</li>
 </ul>
 <p><a class="btn" href="#agent">CARA MINT LEWAT AGENT ↓</a></p>
 </div><div class="statcard">
@@ -222,4 +222,4 @@ document.querySelectorAll('.copyBtn').forEach(function(b){
     if (el && navigator.clipboard) { navigator.clipboard.writeText(el.textContent).then(function(){ b.textContent='TERSALIN'; }); }
   });
 });
-</script></body></html>
+</script><script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(){});}</script></body></html>
