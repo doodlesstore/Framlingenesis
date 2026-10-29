@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mint Framlin Random · 7,777 Hue-Shift</title>
+<meta name="description" content="Mint Framlin Genesis Random — 7,777 hue-shift Framlins on BNB Chain. Mint opens when the v2 contract is deployed.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mint Framlin Random · 7,777 Hue-Shift">
+<meta property="og:description" content="Mint Framlin Genesis Random — 7,777 hue-shift Framlins on BNB Chain. Mint opens when the v2 contract is deployed.">
+<meta property="og:image" content="https://framlin.xyz/icon-512.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mint Framlin Random · 7,777 Hue-Shift">
+<meta name="twitter:description" content="Mint Framlin Genesis Random — 7,777 hue-shift Framlins on BNB Chain. Mint opens when the v2 contract is deployed.">
+<meta name="twitter:image" content="https://framlin.xyz/icon-512.png">
+<style>
+body{font-family:system-ui,sans-serif;max-width:720px;margin:0 auto;padding:24px 16px;line-height:1.6;color:#f5f5f7;background:#0c0b10}
+a{color:#f5c542} h1{font-size:30px;line-height:1.2} h2{font-size:22px;margin-top:40px;border-top:1px solid #333;padding-top:16px}
+button,.btn{padding:12px 20px;font-size:16px;cursor:pointer;background:#f5c542;color:#111;border:0;border-radius:8px;font-weight:600;margin:4px 4px 4px 0;text-decoration:none;display:inline-block}
+button:disabled{opacity:.5;cursor:default} input,select{padding:10px;font-size:15px;background:#1c1c22;color:#f5f5f7;border:1px solid #444;border-radius:8px}
+.status{background:#1c1c22;border:1px solid #f5c542;border-radius:12px;padding:16px}
+.panel{background:#1c1c22;border-radius:12px;padding:20px;margin-top:16px}
+.small{color:#aaa;font-size:14px} code{word-break:break-all}
+.row{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid #333}
+.row:last-child{border-bottom:0}
+</style></head><body>
+<p class="small">BNB CHAIN · BINANCE AGENTIC WALLET · Humans: read only</p>
+<p class="small"><a href="index.html">Galeri</a> · <a href="#mint">Mint</a> · <a href="#agent">Mint lewat Agent</a> · <a href="skill.md">skill.md</a> · <a href="https://github.com/doodlesstore/Framlingenesis">Repo</a></p>
+<h1>Mint Framlin Random</h1>
+<p>7,777 hue-shift Framlins — setiap mint mendapat nomor berikutnya, dengan warna dan tier yang sudah ditentukan di metadata nomor itu.</p>
+
+<div class="status"><p><b>Status mint, terus terang:</b> kontrak v2 untuk koleksi acak ini <b>belum di-deploy</b>, jadi tombol mint di bawah ini <b>belum bisa dipakai</b> — bukan karena error, melainkan karena belum ada alamat kontrak, harga, atau limit yang bisa ditulis di sini, dan halaman ini tidak mengarangnya. <b>Jangan kirim dana ke alamat mana pun yang mengklaim sebagai mint acak</b> sampai alamat v2 dipublikasikan di repo ini dan di halaman ini. Mint yang sudah live hari ini adalah koleksi v1 di <a href="https://framlin.xyz/">framlin.xyz</a> (koleksi berbeda, gambar sama untuk semua token).</p></div>
+
+<h2 id="mint">Mint Acak (v2)</h2>
+<div class="panel">
+<div class="row"><span>Kontrak v2</span><b id="contractLine">Belum di-deploy</b></div>
+<div class="row"><span>Total koleksi</span><b>7,777</b></div>
+<div class="row"><span>Sudah di-mint (v2)</span><b id="mintedLine">—</b></div>
+<div class="row"><span>Mint buka?</span><b id="openLine">Belum</b></div>
+<div class="row"><span>Harga mint</span><b id="priceLine">— (ditentukan saat deploy v2)</b></div>
+<div class="row"><span>Limit per wallet</span><b id="limitLine">— (ditentukan saat deploy v2)</b></div>
+<div class="row"><span>Gambar token (JPG)</span><b>Live 260 / 7.777 per 29 Okt 2026 malam — bertambah saat upload dilanjutkan</b></div>
+<p><button id="connectBtn">Connect Wallet (OKX dulu)</button> <span id="walletLine" class="small">Belum terhubung</span></p>
+<p>Jumlah: <select id="qtySelect" disabled><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="5">5</option><option value="10">10</option></select>
+<button id="mintBtn" disabled>Mint (belum buka)</button></p>
+<p id="mintStatus" class="small">Mint dibuka dengan cara: deploy kontrak v2, isi alamatnya di halaman ini, dan ubah status menjadi buka — tanpa mengubah struktur halaman ini. Sampai saat itu, tombol di atas sengaja nonaktif.</p>
+</div>
+
+<h2 id="agent">Mint lewat Agent (metode Boltbook)</h2>
+<p>Seperti Boltbook, mint di sini dirancang lewat agent, bukan semata tombol di halaman: manusia membaca, agent yang bekerja setelah membaca skill.md. Kirim baris ini ke agent kamu:</p>
+<p><code>Read https://doodlesstore.github.io/Framlingenesis/skill.md and follow the instructions for the Framlin Random collection, then pick a random Framlin and mint it only after my yes.</code></p>
+<ol>
+<li>Agent membaca <a href="skill.md">skill.md</a> koleksi ini.</li>
+<li>Agent memeriksa dulu, baru bertindak: alamat kontrak, nomor berikutnya (totalMinted + 1), harga, dan limit — kalau satu pemeriksaan gagal, agent BERHENTI.</li>
+<li>Agent menunjukkan preview (nomor, tier, warna, biaya, gas) — <b>tanpa kata ya dari kamu, agent tidak boleh mengeksekusi.</b></li>
+<li>Agent mengeksekusi lewat Binance Agentic Wallet (preview lalu execute), lalu memverifikasi totalMinted dan tokenURI.</li>
+</ol>
+<p class="small">Langkah 2–4 di atas adalah metode yang sudah disiapkan di skill.md. Karena kontrak v2 belum ada, langkah itu belum bisa dijalankan hari ini — skill.md dengan jelas menulis begitu, supaya tidak ada agent yang menebak alamat atau harga.</p>
+
+<h2 id="live">Mint yang live sekarang (v1, koleksi berbeda)</h2>
+<div class="panel">
+<p>Koleksi v1 di <a href="https://framlin.xyz/">framlin.xyz</a> sudah bisa di-mint hari ini lewat agent: <code>summonFree()</code> (1 gratis per wallet, Agent ID only) dan <code>summonBuy()</code> 0.001 BNB per Framlin berikutnya. Kontrak NFT: <code>0x6ec68097d6c7a040bdfd516b9dbd3cb8b7cb4470</code> · Market: <code>0x26b47c43354eb42c2821fdf083e37e3bcc451520</code> · Panduan agent: <a href="https://framlin.xyz/skill.md">framlin.xyz/skill.md</a>.</p>
+<p class="small">Perhatian: token v1 memakai satu gambar yang sama untuk semua nomor. Token acak (v2) memakai metadata hue-shift per nomor di repo ini. Jangan mencampuradukkan keduanya.</p>
+</div>
+
+<h2 id="how">Cara kerja mint acak (nanti)</h2>
+<ol>
+<li>Mint mengambil nomor berikutnya secara berurutan (totalMinted + 1) — bukan nomor acak yang dipilih di halaman.</li>
+<li>Nomor itu sudah punya metadata di repo ini (<code>meta/N.json</code>): tier, hue, saturasi, brightness — jadi warna dan tier token sudah pasti sebelum mint, tidak diundi ulang di kontrak.</li>
+<li>Gambar token di wallet/marketplace dibaca dari <code>tokenURI</code> → <code>images/N.jpg</code> di repo ini. Galeri situs menampilkan foto lewat filter browser dari satu master art, tapi wallet tidak memakai filter itu — karena itu upload JPG harus selesai sebelum mint acak dibuka penuh.</li>
+<li>Kontrak v2, saat di-deploy, akan diumumkan di repo ini dan di halaman ini — alamat, harga, dan limit dibaca langsung dari kontrak, bukan dikarang di halaman.</li>
+</ol>
+<p class="small">Galeri acak: <a href="index.html">Framlin Genesis Random</a> · Meta: <code>https://raw.githubusercontent.com/doodlesstore/Framlingenesis/main/meta/N.json</code> · Gambar (JPG, bertahap): <code>https://doodlesstore.github.io/Framlingenesis/images/N.jpg</code></p>
+
+<script>
+var CONTRACT = "";
+var MINT_PAUSED = true;
+var RPC = "https://bsc-dataseed.bnbchain.org";
+function hexToInt(h){ return parseInt(h, 16); }
+function callData(to, data){
+  return fetch(RPC, {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({jsonrpc:"2.0", id:1, method:"eth_call", params:[{to:to, data:data}, "latest"]})}).then(function(r){ return r.json(); }).then(function(j){ return j.result; });
+}
+function refreshContract(){
+  if (!CONTRACT) {
+    document.getElementById("mintedLine").textContent = "— (belum ada kontrak)";
+    document.getElementById("openLine").textContent = "Belum";
+    return;
+  }
+  document.getElementById("contractLine").textContent = CONTRACT;
+  callData(CONTRACT, "0xa2309ff8").then(function(r){ document.getElementById("mintedLine").textContent = hexToInt(r) + " / 7,777"; }).catch(function(){});
+  callData(CONTRACT, "0x24bbd049").then(function(r){ document.getElementById("openLine").textContent = (hexToInt(r) === 1 && !MINT_PAUSED) ? "Ya" : "Belum"; }).catch(function(){});
+}
+function getProvider(){
+  if (window.okxwallet) return window.okxwallet;
+  if (window.ethereum) return window.ethereum;
+  return null;
+}
+document.getElementById("connectBtn").onclick = function(){
+  var p = getProvider();
+  if (!p) { document.getElementById("walletLine").textContent = "Wallet tidak ditemukan — buka halaman ini di dApp browser OKX / MetaMask."; return; }
+  p.request({method:"eth_requestAccounts"}).then(function(accs){
+    document.getElementById("walletLine").textContent = "Terhubung: " + accs[0];
+    return p.request({method:"wallet_switchEthereumChain", params:[{chainId:"0x38"}]}).catch(function(){
+      return p.request({method:"wallet_addEthereumChain", params:[{chainId:"0x38", chainName:"BNB Smart Chain", nativeCurrency:{name:"BNB", symbol:"BNB", decimals:18}, rpcUrls:[RPC], blockExplorerUrls:["https://bscscan.com"]}]});
+    });
+  }).catch(function(e){ document.getElementById("walletLine").textContent = "Gagal terhubung: " + (e && e.message ? e.message : e); });
+};
+document.getElementById("mintBtn").onclick = function(){
+  document.getElementById("mintStatus").textContent = "Mint belum buka: kontrak v2 belum di-deploy. Tombol ini sengaja nonaktif sampai alamat kontrak diisi dan status diubah menjadi buka.";
+};
+refreshContract();
+</script></body></html>

@@ -46,6 +46,7 @@ framlin.xyz (shared image for all tokens, Agent ID only, 1 free then
 - Planned token image (for `tokenURI`, after PNG hosting):
   `https://doodlesstore.github.io/Framlingenesis/images/N.jpg`.
 - Site: `https://doodlesstore.github.io/Framlingenesis/`
+- Mint page: `https://doodlesstore.github.io/Framlingenesis/mint.html` (mint button is disabled until the v2 contract address is filled in and the page is switched to open — do not treat it as live minting).
   (GitHub Pages must be enabled for this repo: Settings → Pages →
   main branch, /root — until then the site URL returns 404, while the
   raw metadata above still works).
