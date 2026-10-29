@@ -76,7 +76,7 @@ footer{border-top:1px solid #2a2a2a;margin-top:48px;padding-top:12px;font-size:1
 </div><div class="statcard">
 <img src="https://framlin.xyz/icon-512.png" alt="Framlin master art">
 <p class="small">COLLECTION</p><p class="bignum">7,777</p>
-<p class="small">META LIVE 7,777 · JPG LIVE 260 · MINT V2 0</p>
+<p class="small">META LIVE 7,777 · JPG LIVE 260 · MINT 0</p>
 <p><a href="#gallery">LIHAT GALERI →</a> · <a href="skill.md">SKILL.MD →</a></p>
 </div></section>
 
@@ -84,12 +84,11 @@ footer{border-top:1px solid #2a2a2a;margin-top:48px;padding-top:12px;font-size:1
 <ul>
 <li>Meta 1–7.777: <b>live</b> di GitHub (doodlesstore/Framlingenesis, folder <code>meta/</code>).</li>
 <li>Gambar galeri: <b>ditampilkan otomatis tanpa upload PNG</b> — browser mengambil master art live (<code>framlin.xyz/icon-512.png</code>) lalu mengubah warnanya per nomor lewat filter CSS sesuai atribut meta. File JPG tetap diperlukan nanti untuk gambar NFT di wallet/marketplace setelah mint v2, karena marketplace membaca <code>tokenURI</code> langsung, bukan filter situs ini.</li>
-<li>Kontrak v2 untuk koleksi acak ini: <b>belum di-deploy</b>, jadi halaman ini belum bisa mint. Jangan kirim dana ke siapa pun yang mengklaim mint random sudah buka.</li>
+<li>Kontrak untuk koleksi ini: <b>belum di-deploy</b> — ini adalah deploy pertamanya, jadi halaman ini belum bisa mint. Jangan kirim dana ke siapa pun yang mengklaim mint sudah buka.</li>
 <li>Upload JPG saat ini <b>dijeda di 260/7.777</b> (atas permintaan pemilik, 29 Okt 2026 malam) — galeri tetap berfoto lewat filter, dan upload dilanjutkan hanya atas instruksi pemilik.</li>
-<li>Koleksi live yang sudah bisa di-mint tetap di <a href="https://framlin.xyz/">framlin.xyz</a> (kontrak v1, tidak dibatalkan, tidak diubah oleh halaman ini).</li>
 </ul></div>
 
-<div class="ticker"><span class="dot">●</span> LIVE — META 7,777 LIVE · JPG 260/7,777 LIVE · GALERI FILTER LIVE · MINT V2 BELUM DEPLOY · V1 LIVE DI FRAMLIN.XYZ</div>
+<div class="ticker"><span class="dot">●</span> LIVE — META 7,777 LIVE · JPG 260/7,777 LIVE · GALERI FILTER LIVE · MINT BELUM DEPLOY</div>
 <div class="ticker">FRAMLIN GENESIS / 7,777 HUE-SHIFT / META LIVE / MINT VIA AGENT / CEK DULU, PREVIEW, BARU EKSEKUSI</div>
 
 <h2 id="agents">PLUG IN YOUR AGENT.<br><span class="y">START COLLECTING.</span></h2>
@@ -101,17 +100,16 @@ footer{border-top:1px solid #2a2a2a;margin-top:48px;padding-top:12px;font-size:1
 <div class="row"><span><span class="dot">●</span> Meta 7,777</span><b>LIVE</b></div>
 <div class="row"><span><span class="dot">●</span> Galeri filter</span><b>LIVE</b></div>
 <div class="row"><span><span class="y">○</span> JPG 260/7,777</span><b>DIJEDA</b></div>
-<div class="row"><span><span class="y">○</span> Mint v2</span><b>BELUM DEPLOY</b></div>
-<div class="row"><span><span class="dot">●</span> Mint v1</span><b>LIVE DI FRAMLIN.XYZ</b></div>
+<div class="row"><span><span class="y">○</span> Mint</span><b>BELUM DEPLOY</b></div>
 </div></section>
 
 <h2 id="activity">PROGRES <span class="y">KOLEKSI</span></h2>
 <section class="prog"><div>
 <p>META <b>7,777 / 7,777</b></p><div class="bar"><div class="fill" style="width:100%"></div></div>
 <p>JPG <b>260 / 7,777</b></p><div class="bar"><div class="fill" style="width:3.34%"></div></div>
-<p>MINT V2 <b>0 / 7,777</b></p><div class="bar"><div class="fill" style="width:0%"></div></div>
+<p>MINT <b>0 / 7,777</b></p><div class="bar"><div class="fill" style="width:0%"></div></div>
 <p><a class="btn" href="mint.html">MINT →</a> <a href="#gallery">LIHAT GALERI →</a></p>
-<p class="small">Belum ada aktivitas mint on-chain untuk koleksi acak ini — dan halaman ini tidak menampilkan aktivitas palsu. Begitu v2 di-deploy dan mint pertama terjadi, progres di sini akan dibaca dari kontrak, bukan dikarang.</p>
+<p class="small">Belum ada aktivitas mint on-chain untuk koleksi acak ini — dan halaman ini tidak menampilkan aktivitas palsu. Begitu kontrak di-deploy dan mint pertama terjadi, progres di sini akan dibaca dari kontrak, bukan dikarang.</p>
 </div><div><p class="small">SHOWCASE — NOMOR PERTAMA PER TIER LANGKA</p><div class="grid" id="showcase"></div></div></section>
 
 <section class="main"><div>
@@ -133,10 +131,10 @@ footer{border-top:1px solid #2a2a2a;margin-top:48px;padding-top:12px;font-size:1
 <p><button id="moreBtn">LOAD MORE (60)</button> <span class="small" id="countLine"></span></p>
 </div><div>
 <div class="panel"><p class="small">MINT</p>
-<p>Mint acak (v2) belum buka — kontrak belum di-deploy.</p>
-<p>FREE MINT bertingkat (v2, diputuskan): token <b>gratis</b>, fee 600 pertama <b>0.0001 BNB</b>, sisanya <b>0.0002 BNB</b> — semua untuk creator + gas jaringan (gas tidak bisa dipatok, mengikuti jaringan BNB).</p>
+<p>Mint belum buka — kontrak belum di-deploy.</p>
+<p>FREE MINT bertingkat (diputuskan): token <b>gratis</b>, fee 600 pertama <b>0.0001 BNB</b>, sisanya <b>0.0002 BNB</b> — semua untuk creator + gas jaringan (gas tidak bisa dipatok, mengikuti jaringan BNB).</p>
 <p><a class="btn" href="mint.html">HALAMAN MINT →</a></p>
-<p class="small">Metode mint: lewat agent (skill.md). Mint live hari ini: v1 di <a href="https://framlin.xyz/">framlin.xyz</a>.</p></div>
+<p class="small">Metode mint: lewat agent (skill.md).</p></div>
 <div class="panel" style="margin-top:16px"><p class="small">TIER — JUMLAH PER TIER</p>
 <div class="row"><span>Common</span><b>4,017</b></div>
 <div class="row"><span>Uncommon</span><b>1,944</b></div>
@@ -152,14 +150,13 @@ footer{border-top:1px solid #2a2a2a;margin-top:48px;padding-top:12px;font-size:1
 <li><b>Meta:</b> tiap nomor punya satu file JSON di <code>meta/N.json</code> di repo Framlingenesis — nama, deskripsi, link gambar, dan atribut (Tier, Hue shift, Saturation, Brightness, Style).</li>
 <li><b>Gambar (tanpa upload):</b> galeri tidak menunggu file PNG. Browser mengambil satu master art (<code>framlin.xyz/icon-512.png</code>, sudah live) dan menerapkan filter warna per nomor — hue, saturasi, dan brightness yang sama dengan yang dipakai saat generate PNG (tersimpan di atribut meta). Warna yang tampil di galeri adalah hasil hitungan browser, jadi nuansanya bisa sedikit berbeda dari file PNG hue-shift yang tersimpan. File JPG di <code>images/N.jpg</code> tetap diperlukan nanti sebagai gambar <code>tokenURI</code> untuk wallet/marketplace setelah mint v2.</li>
 <li><b>Acak:</b> urutan galeri dan tombol Acak memakai angka acak di browser. Tier tiap nomor sudah ditentukan saat generate (Common 4.017, Uncommon 1.944, Rare 972, Epic 486, Gilded 241, Mythic 117) dan tersimpan di meta, bukan diundi ulang di halaman ini.</li>
-<li><b>Mint (nanti):</b> butuh kontrak v2 dengan baseURI ke meta ini, lalu deploy + ganti halaman mint ke alamat kontrak itu. Sampai saat itu, halaman ini hanya galeri, bukan mint.</li>
+<li><b>Mint (nanti):</b> butuh kontrak dengan baseURI ke meta ini, lalu deploy + ganti halaman mint ke alamat kontrak itu. Sampai saat itu, halaman ini hanya galeri, bukan mint.</li>
 </ol>
 
 <h2 id="contracts">KONTRAK <span class="y">&amp; REPO</span></h2>
-<p class="small">Koleksi live (v1, bisa mint sekarang): NFT <code>0x6ec68097d6c7a040bdfd516b9dbd3cb8b7cb4470</code> · Market <code>0x26b47c43354eb42c2821fdf083e37e3bcc451520</code> · Situs: <a href="https://framlin.xyz/">framlin.xyz</a> · Deploy: <a href="https://framlin.xyz/deploy.html">framlin.xyz/deploy.html</a></p>
 <p class="small">Koleksi acak (file ini): repo <a href="https://github.com/doodlesstore/Framlingenesis">doodlesstore/Framlingenesis</a> · Meta: <code>https://raw.githubusercontent.com/doodlesstore/Framlingenesis/main/meta/N.json</code> · Gambar (JPG, bertahap): <code>https://doodlesstore.github.io/Framlingenesis/images/N.jpg</code> · Kontrak: belum ada · Agent guide: <a href="skill.md">skill.md</a> (Pages) / <a href="https://raw.githubusercontent.com/doodlesstore/Framlingenesis/main/skill.md">skill.md</a> (raw GitHub) · Halaman mint: <a href="mint.html">mint.html</a>.</p>
 
-<footer><a href="index.html">GALERI</a> · <a href="mint.html">MINT</a> · <a href="skill.md">SKILL.MD</a> · <a href="https://github.com/doodlesstore/Framlingenesis">REPO</a> · <a href="https://framlin.xyz/">FRAMLIN.XYZ (V1)</a></footer>
+<footer><a href="index.html">GALERI</a> · <a href="mint.html">MINT</a> · <a href="skill.md">SKILL.MD</a> · <a href="https://github.com/doodlesstore/Framlingenesis">REPO</a></footer>
 
 <div class="modal" id="modal"><div class="box"><div id="modalContent"></div><p><button id="closeBtn">TUTUP</button></p></div></div>
 <script>

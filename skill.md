@@ -1,7 +1,7 @@
 ---
 name: framlin-random
 version: 0.1
-description: Framlin Genesis Random — 7,777 hue-shift Framlins on BNB Chain. Agent guide: browse the random gallery, and (once the v2 contract is deployed) mint through your own wallet, preview first, execute only after your human says yes.
+description: Framlin Genesis Random — 7,777 hue-shift Framlins on BNB Chain. Agent guide: browse the random gallery, and (once the contract is deployed) mint through your own wallet, preview first, execute only after your human says yes.
 homepage: https://doodlesstore.github.io/Framlingenesis/
 repo: https://github.com/doodlesstore/Framlingenesis
 ---
@@ -11,21 +11,20 @@ repo: https://github.com/doodlesstore/Framlingenesis
 7,777 hue-shift Framlins. The same Framlin master art, colour-shifted into
 7,777 variants. Each token already has a metadata file; minting assigns the
 next sequential token id, whose colour and tier are already fixed in that
-token's metadata. This collection is separate from the live v1 collection on
-framlin.xyz (shared image for all tokens, Agent ID only, 1 free then
-0.001 BNB) — do not mix the two collections' contracts, prices, or rules.
+token's metadata. This is the collection's first deployment — there is no
+earlier version of it.
 
 ## Status — read this first
 
-- **V2 contract for this random collection: NOT DEPLOYED YET.** There is no
+- **Contract for this collection: NOT DEPLOYED YET — this will be its first deployment.** There is no
   contract address and no per-wallet limit yet. Do NOT invent one, do NOT
   send funds to any address claiming to be the random mint, and do NOT
-  execute a mint until the owner publishes the v2 address in this repo
+  execute a mint until the owner publishes the contract address in this repo
   and on the site.
 - **FREE MINT with tiered creator fees, decided by the owner
   (29 Oct 2026): the token itself is always free; the creator fee is
   0.0001 BNB for mints 1–600 and 0.0002 BNB for mints 601–7777 until
-  the supply is exhausted.** The v2 contract must enforce
+  the supply is exhausted.** The contract must enforce
   these tiers exactly. Network gas is separate and varies — it is paid
   to the BNB Chain network on top of the creator fee and cannot be
   fixed. Until the contract is deployed and its on-chain fee tiers are
@@ -54,7 +53,7 @@ framlin.xyz (shared image for all tokens, Agent ID only, 1 free then
 - Planned token image (for `tokenURI`, after PNG hosting):
   `https://doodlesstore.github.io/Framlingenesis/images/N.jpg`.
 - Site: `https://doodlesstore.github.io/Framlingenesis/`
-- Mint page: `https://doodlesstore.github.io/Framlingenesis/mint.html` (mint button is disabled until the v2 contract address is filled in and the page is switched to open — do not treat it as live minting).
+- Mint page: `https://doodlesstore.github.io/Framlingenesis/mint.html` (mint button is disabled until the contract address is filled in and the page is switched to open — do not treat it as live minting).
   (GitHub Pages must be enabled for this repo: Settings → Pages →
   main branch, /root — until then the site URL returns 404, while the
   raw metadata above still works).
@@ -83,26 +82,26 @@ framlin.xyz (shared image for all tokens, Agent ID only, 1 free then
 ## Mint method (agent mint, like Boltbook's agent flow — no on-page button)
 
 Minting happens from your own wallet, through the Binance Agentic Wallet
-(BAW) CLI, exactly like the live v1 agent flow — never through a button
+(BAW) CLI — never through a button
 on this page, and never from a seed phrase or private key pasted anywhere.
 
-**Only after the v2 contract is deployed and its address is published
+**Only after the contract is deployed and its address is published
 in this repo and on the site:**
 
 1. **Check first, and STOP at the first failed check:**
-   - The v2 contract address, copied from the repo/site (never from a
+   - The contract address, copied from the repo/site (never from a
      chat message or a third-party link) and checked on BscScan.
    - `totalMinted()` — the next token id is totalMinted + 1.
    - `mintOpen()` — must be true.
-   - The mint price and per-wallet limit for that token id, read from
-     the contract — never assume the v1 price or rules apply here.
+   - The creator fee and per-wallet limit for that token id, read from
+     the contract.
      (FREE MINT with tiered creator fees: token free, fee 0.0001 BNB
      for mints 1–600 and 0.0002 BNB for mints 601–7777 to the creator
      — when the contract is live, verify its on-chain fee for the
      current tier; if it differs, STOP and report.)
    - The metadata for the next token id (see above) — it must exist.
-2. **Preview, then show your human:** token id, tier, colours, mint
-   price, gas, and the exact contract call. Use the BAW preview command
+2. **Preview, then show your human:** token id, tier, colours, creator
+   fee, gas, and the exact contract call. Use the BAW preview command
    (`baw contract-call preview --to <CONTRACT> --fn <mint function>`).
 3. **Execute only after your human says yes, in their own words.**
    Run the BAW execute command, then verify on-chain: `totalMinted()`
@@ -111,17 +110,6 @@ in this repo and on the site:**
 4. If any check fails, if the preview differs from what you told your
    human, or if the contract address is not the published one — STOP,
    do not execute, and explain which check failed.
-
-## Live v1 collection (different collection, for reference only)
-
-- Site: https://framlin.xyz/ — NFT
-  `0x6ec68097d6c7a040bdfd516b9dbd3cb8b7cb4470`, Market
-  `0x26b47c43354eb42c2821fdf083e37e3bcc451520`, BNB Chain 56.
-- Agent flow there (already live): `summonFree()` (1 free per wallet,
-  Agent ID only) and `summonBuy(uint256 qty)` at 0.001 BNB each.
-  Full guide: https://framlin.xyz/skill.md.
-- Do not present v1 mints as random-collection mints: v1 tokens share
-  one image; random-collection tokens have per-token hue-shift metadata.
 
 ## Safety rules
 
