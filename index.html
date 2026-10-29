@@ -1,0 +1,139 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Framlin Genesis Random · 7,777 Hue-Shift</title>
+<meta name="description" content="Framlin Genesis Random — 7,777 hue-shift Framlins. Random gallery from the Framlingenesis collection.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Framlin Genesis Random · 7,777 Hue-Shift">
+<meta property="og:description" content="Framlin Genesis Random — 7,777 hue-shift Framlins. Random gallery from the Framlingenesis collection.">
+<meta property="og:image" content="https://framlin.xyz/icon-512.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Framlin Genesis Random · 7,777 Hue-Shift">
+<meta name="twitter:description" content="Framlin Genesis Random — 7,777 hue-shift Framlins. Random gallery from the Framlingenesis collection.">
+<meta name="twitter:image" content="https://framlin.xyz/icon-512.png">
+<style>
+body{font-family:system-ui,sans-serif;max-width:1080px;margin:0 auto;padding:24px 16px;line-height:1.6;color:#f5f5f7;background:#0c0b10}
+a{color:#f5c542} h1{font-size:30px;line-height:1.2} h2{font-size:22px;margin-top:40px;border-top:1px solid #333;padding-top:16px}
+button,.btn{padding:10px 18px;font-size:15px;cursor:pointer;background:#f5c542;color:#111;border:0;border-radius:8px;font-weight:600;margin:4px 4px 4px 0;text-decoration:none;display:inline-block}
+button:disabled{opacity:.5;cursor:default} input,select{padding:10px;font-size:15px;background:#1c1c22;color:#f5f5f7;border:1px solid #444;border-radius:8px}
+.status{background:#1c1c22;border:1px solid #f5c542;border-radius:12px;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-top:16px}
+.card{background:#1c1c22;border-radius:12px;padding:10px;cursor:pointer;border:2px solid transparent}
+.card img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;display:block;background:#111}
+.ph{width:100%;aspect-ratio:1/1;border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;color:#ccc;background:#111;padding:8px;box-sizing:border-box}
+.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:20px;background:#333;margin-top:6px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:16px;z-index:10}
+.modal.open{display:flex} .box{background:#1c1c22;border-radius:16px;padding:20px;max-width:520px;width:100%;max-height:90vh;overflow:auto}
+.box img{width:100%;border-radius:12px} .small{color:#aaa;font-size:14px} code{word-break:break-all}
+</style></head><body>
+<h1>Framlin Genesis Random</h1>
+<p>7,777 hue-shift Framlins — every mint gets a different colour. This is the random collection: the same Framlin master art, hue-shifted into 7,777 colour variants, each with its own tier border.</p>
+<div class="status">
+<p><b>Status, terus terang:</b></p>
+<ul>
+<li>Meta 1–7.777: <b>live</b> di GitHub (doodlesstore/Framlingenesis, folder <code>meta/</code>).</li>
+<li>Gambar PNG 1–7.777: <b>belum ter-upload ke web</b> (total 3,5 GB, file biner tidak bisa lewat connector GitHub). Kartu yang gambarnya belum ter-upload tampil sebagai placeholder sampai PNG-nya ter-host — tanpa perlu mengubah halaman ini lagi.</li>
+<li>Kontrak v2 untuk koleksi acak ini: <b>belum di-deploy</b>, jadi halaman ini belum bisa mint. Jangan kirim dana ke siapa pun yang mengklaim mint random sudah buka.</li>
+<li>Koleksi live yang sudah bisa di-mint tetap di <a href="https://framlin.xyz/">framlin.xyz</a> (kontrak v1, tidak dibatalkan, tidak diubah oleh halaman ini).</li>
+</ul>
+<p class="small">Aktifkan GitHub Pages repo Framlingenesis (Settings → Pages → main, /root) supaya halaman ini tampil di https://doodlesstore.github.io/Framlingenesis/ — meta dibaca dari raw GitHub, gambar dibaca dari Pages.</p>
+</div>
+
+<h2 id="random">Framlin Acak</h2>
+<p>Tekan tombol untuk mengambil satu Framlin acak dari 7.777.</p>
+<button id="randomBtn">Acak Framlin</button>
+<div id="randomOut"></div>
+
+<h2 id="gallery">Galeri Acak</h2>
+<p>Urutan galeri diacak setiap halaman dibuka. Cari nomor, atau filter berdasarkan tier.</p>
+<p><input id="searchInput" type="number" placeholder="Cari nomor, mis. 1234" min="1" max="7777">
+<select id="tierFilter"><option value="all">Semua tier</option><option value="Common">Common</option><option value="Uncommon">Uncommon</option><option value="Rare">Rare</option><option value="Epic">Epic</option><option value="Gilded">Gilded</option><option value="Mythic">Mythic</option></select>
+<button id="shuffleBtn">Acak ulang</button></p>
+<div class="grid" id="grid"></div>
+<p><button id="moreBtn">LOAD MORE (60)</button> <span class="small" id="countLine"></span></p>
+
+<h2 id="how">Cara kerja file-file ini</h2>
+<ol>
+<li><b>Meta:</b> tiap nomor punya satu file JSON di <code>meta/N.json</code> di repo Framlingenesis — nama, deskripsi, link gambar, dan atribut (Tier, Hue shift, Saturation, Brightness, Style).</li>
+<li><b>Gambar:</b> tiap nomor punya satu PNG di <code>images/N.png</code> (hue-shift dari master art framlin.xyz/icon-512.png). Begitu PNG ter-upload ke Pages, semua kartu di halaman ini otomatis menampilkan fotonya — tidak perlu edit HTML lagi.</li>
+<li><b>Acak:</b> urutan galeri dan tombol Acak memakai angka acak di browser. Tier tiap nomor sudah ditentukan saat generate (Common 4.017, Uncommon 1.944, Rare 972, Epic 486, Gilded 241, Mythic 117) dan tersimpan di meta, bukan diundi ulang di halaman ini.</li>
+<li><b>Mint (nanti):</b> butuh kontrak v2 dengan baseURI ke meta ini, lalu deploy + ganti halaman ini ke alamat kontrak itu. Sampai saat itu, halaman ini hanya galeri, bukan mint.</li>
+</ol>
+
+<h2 id="contracts">Kontrak &amp; repo</h2>
+<p class="small">Koleksi live (v1, bisa mint sekarang): NFT <code>0x6ec68097d6c7a040bdfd516b9dbd3cb8b7cb4470</code> · Market <code>0x26b47c43354eb42c2821fdf083e37e3bcc451520</code> · Situs: <a href="https://framlin.xyz/">framlin.xyz</a> · Deploy: <a href="https://framlin.xyz/deploy.html">framlin.xyz/deploy.html</a></p>
+<p class="small">Koleksi acak (file ini): repo <a href="https://github.com/doodlesstore/Framlingenesis">doodlesstore/Framlingenesis</a> · Meta: <code>https://raw.githubusercontent.com/doodlesstore/Framlingenesis/main/meta/N.json</code> · Gambar (rencana): <code>https://doodlesstore.github.io/Framlingenesis/images/N.png</code> · Kontrak: belum ada.</p>
+
+<div class="modal" id="modal"><div class="box"><div id="modalContent"></div><p><button id="closeBtn">Tutup</button></p></div></div>
+<script>
+var TIERS = "CCCCCCUCCCCCUUGCCUUUUCCCCUCRCGGUERRGECCUURUURCURCCCCCUEUCCUGCUCCUGUUCURECCCCCURURCCCCCUCCGCCURCCUURCURUCUCECCCCCUCCUCUCUCCCCCUUUGCRERCUECCUEUGUUUCUCRCUCCECCUMCCCUUCCCCCCCCUCUUUCRCCRGUCCRRURRGUCCECURURUCRUCURCCUUCCCCURCUGUUCGCUCCUCCCCUUUURCRCUCRCUERCUCCRCUCCGCCCCUUECCCCURCRUURUCGCRUCUUCCCCCMCUERUCUUCUCEUUCRCCCCCRUCCUUCCCCUUCMCRCECCCCCCCCUCCUCCUCURCREECCUCUCURUCUUCUUEUCCCUUCCCCCCCCCCCCCCCECCCRRCCUMCCCCCCCCCUCECRCCUGRRUUCCUUCECCCCCEUCECCCCCCUCUUCCCUCUUCUECCUCCURUURUUEECEUUCCCCCCRCCRERCRCUCCEUCCCUECCRRUCCRRUCCCURCURCUCEUUCGCCUGRCCCUCUEURCUUUCCUCCURCRCCECCCECCCCCEUUCUUCCUCCRCRECCCRRUCREUCCRURCCCGUCCCUCUUCCRRCRRUURUCEGCCERCCECGMCCCCUCCCRCRCCCEGCUCRMCCCUUGGCUUCCCCGUCRCCCCCUCCRRCCCRCUCCCURECCRUCCCGUCRUCUUCCCRCERCUCURRRGCUCCUCCCCCCCCECECCCGCUCCUUCRUCCCUCCUCCCCMCECCCCUUCCUCCCCCUCUURCCUUCCUCRCCRCCRCCCUCEUCRCCUCCUCRUGUCCRUCCCCURCCCECCECCCUCGCCCCCCCUUUCCRCUCECCGCUUUURCUURCCUCCCUUUCCUMCCCURECUUUCUCRUCUUCMCRCUCURCRUUUCCCCCCCCCCUUCRCUCURUCUCCUEURUCURRCCGCCUUGUUURCCCCRGCCCCECCCUUCCCCUCCURCCURUUCRCCCUUCCRCCMECCURCCCUCCGUUUCRUCUCRGCRUURCRCRCCCCRCCUUCCGCCGCUUCGUUCCCRCRCUGUCCCCCCCRCCCCUCRCCUUUCUECCRCCCCURUCCRUCCUECRUCCCRCUUUCCCCCCRCUCGCRMCUEEURCCUUCREGRURCCCECCCCCCCCERCCCCCCECCCCCUGCCCCCCUUECRCCUUCCCCCCCRUCCUUCCCCCCUUCCCCUCUCECCUCGUCCECCCUUCUCRRCCRCECCCCRUUGUCGCGUURERCCRRCCCCEUCECRGCCUCEECCRUCECGCCCMCUCCCGRRCCGRCECCCCGCURUCUCCCCCRCCCUCCCGCMCRCRRCCUCGRUUECCRCRCERCCCCURCUUCCRCUCCCMCUCCUCUECUCUCRECUCUCCEECUECCRRCGCCCCRRCUERECCUCCECEGRCMUCCGCUUCMCCECURCUUGCRUUUCRCCCUCCCUUUUCGURCCRUUURRCCCUEURCCURURCRCCCCCRREERUCCRRCCECUCCURUCCRCUUUCRCCUCUCCECCCUCURCCCCEUCCCRCCCCRUCCRCRCCGGEECUCUCUUCMUECRCUUCURUURUURCCCUUCCUCCUCCEUCRCCUUUCRCCUCUCUGCCCCCCCCCCECECRRCCCCCCUUCRCECUUCECUCUCUCURCURRRUUCCCCCCUUMECCRCUUCCCEURCCCCGCCREURRECURUUCURCCCCURCCUCECCUUCUCUCUCERCCCUCUURRCCRCCCCRCCCUURCUUCMCUCEEECUCRURCCCCUCCRRURRECCRCCCCECCCCCRCUEUUGUCUCUEUUUEUCCEUMURCCCREEUEEUCCCCRCCCCCCCCCCUCCCCEUUCUCERCCCCCERCCCUCCUCCCCCCRCUCRUCUCRCRUCCCMEGRGCUCEGUCCRGECUCURUCURCCCCUUCUEUCECUUCCUUCCRUUGUCCUCECCCURURCMCGCUCURCCUUECCCUCUCEURUCUUUCCECECCEUCEEEUUCURCUUCUERUGCCCCUURMERGRGCCUUCUCUCUCCRCCCRCCCCRURUCCCCUEUCCRUUGCMCRECUCRRCUCUEGCUECCCECERCCCRUUCEURCUCUGEUECRMCUURRCCUCGUURCCCCCCCCRRCCECCCCRRRCRCCRRCECCUREUUCRRCCUCUECCRUCCURUCCECUUUUUCUCRCUCGUCCCUCCECEECCRCCRCUCCCUCCCCUCCRUGCRCUCCRUCCCRCRCCUUUCUUCEECECCGUCMEGCECUCCURCUUERCUUECRCCCCCCCECCCERRRCCCCCCURUCCECCCERURCCCECCUECMCURCCCCCCUUUUEUCCRCRRUCCMCCRCCCUCRCEGCRURUCUCUCCGUCCEUUCURURCRRCRUUUCURUCCGUURECECMCRUCCRUCCCURECCRCGCEUURRCCUCCCCCUCCCUCRUURCCCCRCEECECCCCUCCCCCUUCCMRCUUUCCCCCCUCMCCUCCCCCCEMCCCCCCCRRURCCCCECUCUCGEUUUUCCMUECCGEUCCRUUCUUCRRCECCCCCRCUUCCCCCUCRRCECCUGRCUUCCCCCCCCCCUCCECUGCCUCUEGRRUCUCRCRRCCCCCCCRECCCCCCRCUCUUERCUCCERURGCGCUUCUCRCRUUCGCECECUUUEECCCCUURCUCUCCRCCCCCUECRRCCCCCCCUECCGCCCCCCUEUCECUUCUCERCCCCUCCCCCEREURRCCURCERERUUCRUCCRCCUUURUCCUERCCERCCECRGRUGMUCRCRRCUECCCURCCCUREGUCUCUUUCCRCCCCUCCCUUCRCCRCRCCUUERUUCCCUCGUUCCURCGUUGUEUCEECCCUCCCCCCUCUCCCCEUUCCCRECCUUCUCCRCCRRCCUCCCCCCCECGCCCCUCUMECUCCURRCCUCCCCCCCCCURURGUCCEUCRURECUURCUCRCEUUMCCCCCCUUCUUUCCGUCCEUECUUCUCCUCCERRCUCCCCCECCCCUMUCCUCMUCCUCUCECUCCRCCCCCCMCCCUEUCCRCCUUUUECRCRRRCMGUCCRCRCCCCCCCUURCUECUCCRCUCRCCUMCRCGUECCCCCGUUEURUUUCCMCCEUCCCCCRCCERCGCCUCUGCEUCRUCRUUUURUCRCCCUGGCCMUMRCUECCURCRCUCECCCRUCCCRUURUUCCCECCCUUUGCCMRGCCRCCGCCERCCGRCCCUUCCCCUCCUCCGCCCUCRCRCCCUCCUCUCCUURRUECUCCUECUCRCCCCRCUCEUCUGMCCECRRCUCRUCERUUCGUCCEURUUECCCGUUEECUCCCUCRCCCCCUCUCUCUCUUECCEURCUCCCCMCCCCUCCCCMCUUECCCRRCCCCCCRCCCCUCCCCCCUUCMCURCRECCCRRUUCCCUCCUECUUCUCCUCCCCCCCUCCCCUUMEGUCUUCURRCURCCCGCCGUUCCUEUCCUCUCCCCCUCCCUURRMCRCEUCCRRCUCCECCCRCRUCCCECCCRUUUUGEUUCCCRRCECCCRRRCCCCCCRURCUCMGUMRCEEGECCUCCUUCCRCCUUCCCCECUCCCCCRCCCCCCRUURGCURCUCCECCGCUMUGRCRCRRCCCCCCCCEGCCCGUUCCUCUCURRCUGUCUCEUUCERCCCUUUECUCUCCUCRUCCEURUCGCCUURCUCUCCRCCCUCCUCCCCCCCUECRCCCGCUCCCUCCCCMRCCUCUCCRCUCCCCCCCUCUCUUUCRUUCCCUEEUUUCUUCMCCGCCUCUCCERCUUCUCEUCUCCEUCUCCUECCRCCRCUUUCECCCCCUCCUMUCCRCCURCUEURRCCCUURCCCUCUCRCCERCCCRCCUCUCURCEUMCCCCCRUUUCCCUUCRCUCCCUCCCCCCCCCCUCCCCCCUCUCCCURUCUUUGCUCCCCRCUUGRECECUUCCRCUCCRCCCCUECUUCERCRRRRCRCCECUCRCMECCGRUCCCUCUCCRRCCECCCUCCCCRCCUCUMRCRCCRRUCCCCCRCCRUECCCCCCMCCCCUCRCRRCUUUUUCMCRCRUCURCCCEUCCUCCEEUCRUCCCURUMGCCUUUCCCCRUCUUCCCRCCCUUCUUCRCCCCURCERCCCUUGUUUEGCUCCCCCGCCCCRCCRUCUUCUURUCCUERURUCCCCUUCUECRCRCCECEUCUECUUEUCCCUCCRCUCCCEURCCGCURUCCURUUCCUGCGRUUUEUUCCRCCRUUCGRECCURCUUCRCUUCUUUCCCUCCCRCUCUCRCCUCCRUCCCCUUUUURCGRRCCCUCCUCCGECCUUCGECCUCUCMUUCUCCCRCUGGECUUUCUECMCUUCUUCRCCUCCCRCUCCRCRRECCCCCCURMUCCRCCMCCRUUCMCUURUCUUCUCURURUCUECUCECCRCURUCUUURCCRUCUCCCGCEUCCCCCCCRECCRCEUUUCGCRCCCCUCUCUECCCCEEUEUCCRCUCCECUCCCRRGRRUCCCMMCCUUCRCUURCCCCCERUUCCCCURCCCGUUUCGUUCCMCCURCCCCCMCECUMCCURRCRCCCCECCCCCCCURCUCECRCRUEURCUCEGUCMCCCECCRCUCCUUCCCUCUUURCUCCECCCCCCCCUCCCCRRRUUUCECUCUCECUCCCCECCUCUCCRCMCCRRCREUCCRCUCUCUCUCUUUUCCCRCGUCCCRCMRGUCCUURCRURGCCUCCUUUUUCCCCUCUCECCUCCUUUCCCCCCCCUCUCCCUCCUCCCCCECRCGCUCCCRUEUCCCRUCCMCUUUCCCRUCCCCCCCCCCCRCEURUCCCCUUCCCGUCCRCECECECGCCUCUUCCCUUCRUUCCCECUUMCRUCCECCMCUUGCCUUCCECCCUUCEUCCGRCCRCCCCCCUCUCUUGUCUCUCCCMECCUUCEUUURCCCMGCCUUCUCUURCECCUCCCRCCUCRCCUUCUCCCURCRCCCCRCCCUCCRRUCRCECECRCCRCUUCRUCCRCCCCCCCCRCCCCUCCCMCRCCCUCCUCUUCUCUUGCCCUUCCCCCCCECCRCCCCCCCGCERUUCCCCUUCUCCUGCEUCRUCRUUUCMUURCUCRUCRCCUCGURCUCCUCCUCURCCCRERCCCUGRUUCCCCMUCCCCCCUERGUCUCCGCCCCRCURCUECURCECECEUCEUCCUCRCCCCUUUCCUCCGRUCUCCUCRCUUCUCURURCURURUCUEUUCCRUUCCCCCUUCRCCUUCCUUUCUEUUUCRUCECGUCUCRECUCUCCUCCCCCCRCCCCCCCCCUUUCCRUCUCUCCCCERRCMUUUURCRCCCUCCRCCUCCUCUCCUCCCUCECRCRCCUCUCRGCUCCUCRCCCCCUCCUCEUCCCCCCCUCCCREUCRUUCUCUCUCUUCUUUCRCCCUEMCCRCCRRRRCUCUUCUCURCCRCCRUCCCCUCCUGCCCUCCCCUCUUCECCCUURURUCUCUCURCUUUCCRCRCCRUCCCCCGCCCUURCGCRCURCCCUCCGCCUUCCCEUCRUGRGREECCCCUUUCUCCEUCCCUCRURCURCCCRCUURREUCCEURRCCCCCCCCCMUCCUUCCCCUECUCUUCRCUCUCUCMCGUCCRMCUUUCCCRERUURRCGREERCCCECCCUUCRCCRURCERCCUMEECCUCCCCEEUUCCUCCURUCUURMUCCUUCREURCCCCCRGCUCECRCUECCURUCCCCUCCCURCGUECUCUGCCERCRUCCRCCCURRCRURRCCCCCCGURRCUUUCCCCCCCCRUCMUCCRCUCUCCCRUCREUCEURCCCECCCCCUCUCCUGCCCUCCCURRRCCUCCUCCCCCUCUCRCCUUCCUCURCUUCCCCCCCUCCCCCCCMCCCEUMRUUCCURUCCCCRRCCURUCUCUCUCRRECCCRCCCCCECUUUCCCURCCCCCCUCUMCGUCEUCCUCCCCCUECCUCCCCCUURUCRCCCCCCUCURRUCMCRURUCUUCCCUCCUCUUUCCUECECECRRCUCUCUCCCCUUCCCCCUCCCCCRCCCCCCUECECUCUCCUUCCUREUCUCCCUUUCEURCCRUCUUCCUUCCCERCCURGCCCCRCCUCURCRUCUUCCCCUCCUCCUUCCCCCUCCURUMCCUECUUCRURCCRCUUCCUUCCUCCCECUCECUUUCCCRRRRCCUUUUUCCCRUCUCRCECCCCCCUCCCCCCECCCECCCCCUREUUUUECCCCUCCCCUUCCCUCCCCCCCRUCRMCGCRCRREECECECERCCUCCMUUUCUUCURECCCUCUGUUGCURCUCCCUCCCRCECRCCCCCCUCUUCCRCUUUCEUCCREUUUUUCECCRUCMECCURREUCCUUCCCCCCCCCEUUERCCUUUCRCCUMCECUUCCCRUCCCCCMCMUCUUURUERCCCRCUCMRCCRUUCRCCCGMCCRCCCCUUCCECGCCCCCCUGCRCCUCCUUCRRCCCUCCCCCCCUCUCCUCCCCCRCUCUCECUCUCGUCRCECUCURCUUCCCUCEUCUECCCCRUUCUCRUCRUCUCCRMCUCCUCCCCECMCCEUCUCCEGUUCCUCCCCCCUCCGUCRUUCGCCCGCRUECCUCRCRUCCCUCCCUCECUCUCRCUCRCUCCCRCURCCCCEUECUCUCCUCRCCECUUURRUCCCCURRCUUCGURRRUCCCCCUCRCCECCEUCUUCURCMMUUGCEUCUCCCECCCCCCUCCRCCECCCGUEUUUUECUCUCCRRUCCCCUCCCCRECCGCCCCGRCUUCUCRCUCUUCURUCCUCUCCCCECURCCUUUCRRUUCCMCCCCCEUCUCCCCCUCCCCUGRCRERRUURCRRGGGCCCRECCRCCGRURURCCCCCCURCUCGRRCCCUCUUUCRCCCRCCGUCCRRUECRCURUCCCCCCCCCUCUCUCERCCCUCCUCCCRUERCCUCCUCUCUUCUUCCUECUUCGRURCCUCRCCCRCURUUUCCCRCUCCRECCGECCCCCECUGUUUCCCCURCRUCUCRCCCUCCCCRCRRUUCRCUCCURCUCCCCCUCUCUUCRCUCRCCUGUCRRCCUGUCGECCCCUCUCCCCRRCRRCCCCRRCEUUCUGCCCCRUCCCCUCGCGCECRCUCCCGCEUUCUECCRUCGCRCCRCCUCUCURCRRCCRCUGCUURCCRGCCCCCRCERCCCCRRCRCCEUCCCRCCCCUUCCUURCCCCUCCCCCRCUEURCCCCECCCUCUURCUCCCCCUUCCUCCRCUCCCUCRCCCRCMRURRCCCRCRCCRECCCRGRCCCCCGUUCCCUCRUCCUCCCRCUUCCUUGUCCGREUUCUUCCUCCURCREUCCRCCUCUCCCCCRCUCCCCGUUCCCCCCUCCRCUUCCRGCCCCCGCCCRRECURUUCRCUCCCCCGERRRCCCUEUUUCCECRUCCCCCRCCCCUCCCUCUCCGCCEUCCCRRCERCCCEGCCGUUCUUUMCEUUCCUCRUUCCECEUUCUCCRUCCRCCRUCCUCRCCRCCRUCCCCCRMCEUCCRURCUCUCUCUUCCUUUCRUUUUCCUCCECCCUCCECCCUUCCUCECUCCUCMCCCRCCCUCEUCUUUCUCCCRCCUCURUCUURCCRCEUURUMCCCCCCUCCRCUCRCCCUCCCCUCCUCCCCCURCCCGCUUUUCCGEUCRRCCCUUCCUCUCCURUCCRRCRCCCGUCCCRCCUCCCGCCCUMUCCCUCCUEUMRCUCCCCRUEUC";
+var TIER_NAMES = {C:"Common", U:"Uncommon", R:"Rare", E:"Epic", G:"Gilded", M:"Mythic"};
+var TIER_COLORS = {Common:"#888888", Uncommon:"#2ee6a8", Rare:"#3b82f6", Epic:"#a855f7", Gilded:"#f5c542", Mythic:"#f5c542"};
+var META_BASE = "https://raw.githubusercontent.com/doodlesstore/Framlingenesis/main/meta/";
+var IMG_BASE = "https://doodlesstore.github.io/Framlingenesis/images/";
+function tierOf(id){ return TIER_NAMES[TIERS[id-1]]; }
+function cardHTML(id){
+  var tier = tierOf(id);
+  var color = TIER_COLORS[tier] || "#888";
+  return '<div class="card" data-id="'+id+'" style="border-color:'+color+'">'
+    + '<img src="'+IMG_BASE+id+'.png" alt="Framlin #'+id+'" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';">'
+    + '<div class="ph" style="display:none;border:2px solid '+color+'">Gambar belum ter-upload<br>#'+id+' · '+tier+'</div>'
+    + '<div><b>#'+id+'</b><br><span class="tag" style="border:1px solid '+color+'">'+tier+'</span></div></div>';
+}
+var order = [];
+function shuffleOrder(){
+  order = [];
+  for (var i=1;i<=7777;i++) order.push(i);
+  for (var i=order.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=order[i]; order[i]=order[j]; order[j]=tmp; }
+}
+var shown = 0, PAGE = 60;
+function filteredOrder(){
+  var f = document.getElementById("tierFilter").value;
+  if (f === "all") return order;
+  return order.filter(function(id){ return tierOf(id) === f; });
+}
+function renderMore(){
+  var list = filteredOrder();
+  var grid = document.getElementById("grid");
+  var slice = list.slice(shown, shown+PAGE);
+  slice.forEach(function(id){ grid.insertAdjacentHTML("beforeend", cardHTML(id)); });
+  shown += slice.length;
+  document.getElementById("countLine").textContent = "Menampilkan " + shown + " dari " + list.length + " (filter: " + document.getElementById("tierFilter").value + ")";
+  document.getElementById("moreBtn").disabled = shown >= list.length;
+}
+function resetGrid(){ document.getElementById("grid").innerHTML=""; shown=0; renderMore(); }
+document.getElementById("moreBtn").onclick = renderMore;
+document.getElementById("shuffleBtn").onclick = function(){ shuffleOrder(); resetGrid(); };
+document.getElementById("tierFilter").onchange = resetGrid;
+document.getElementById("searchInput").onchange = function(){
+  var id = parseInt(this.value, 10);
+  if (!id || id < 1 || id > 7777) return;
+  showDetail(id);
+};
+document.getElementById("grid").addEventListener("click", function(e){
+  var c = e.target.closest(".card"); if (c) showDetail(parseInt(c.getAttribute("data-id"), 10));
+});
+function showDetail(id){
+  var m = document.getElementById("modal"), c = document.getElementById("modalContent");
+  var tier = tierOf(id);
+  c.innerHTML = "<h3>Framlin #"+id+" · "+tier+"</h3><p class='small'>Memuat meta…</p>";
+  m.classList.add("open");
+  fetch(META_BASE+id+".json").then(function(r){ if(!r.ok) throw new Error("Meta HTTP "+r.status); return r.json(); }).then(function(meta){
+    var attrs = (meta.attributes||[]).map(function(a){ return a.trait_type+": "+a.value; }).join(" · ");
+    c.innerHTML = "<h3>"+meta.name+" · "+tier+"</h3>"
+      + '<img src="'+IMG_BASE+id+'.png" alt="Framlin #'+id+'" onerror="this.style.display=\'none\';">'
+      + "<p class='small'>Gambar belum ter-upload ke Pages? Kartu di atas akan kosong sampai PNG ter-host — meta di bawah ini sudah live.</p>"
+      + "<p>"+attrs+"</p>"
+      + "<p class='small'>Meta: <a href='"+META_BASE+id+".json'>meta/"+id+".json</a> · Gambar (rencana): <a href='"+IMG_BASE+id+".png'>images/"+id+".png</a></p>";
+  }).catch(function(e){
+    c.innerHTML = "<h3>Framlin #"+id+" · "+tier+"</h3><p>Meta tidak bisa dibaca: "+e.message+"</p><p class='small'>Coba lagi, atau buka langsung: <a href='"+META_BASE+id+".json'>meta/"+id+".json</a></p>";
+  });
+}
+document.getElementById("closeBtn").onclick = function(){ document.getElementById("modal").classList.remove("open"); };
+document.getElementById("modal").addEventListener("click", function(e){ if(e.target.id==="modal") e.target.classList.remove("open"); });
+document.getElementById("randomBtn").onclick = function(){
+  var id = 1 + Math.floor(Math.random()*7777);
+  var out = document.getElementById("randomOut");
+  out.innerHTML = cardHTML(id);
+  out.querySelector(".card").addEventListener("click", function(){ showDetail(id); });
+};
+shuffleOrder(); resetGrid();
+</script></body></html>
