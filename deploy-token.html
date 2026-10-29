@@ -1,6 +1,6 @@
 <!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Deploy Token Framlin (FRML) · Framlin Genesis Random</title>
-<meta name="description" content="Deploy token Framlin (FRML) untuk Framlin Genesis Random: 1.000 FRML per mint NFT, maksimal 7.777.000, hanya lewat kontrak NFT.">
+<meta name="description" content="Deploy Framlin token (FRML) for Framlin Genesis Random: 1,000 FRML per NFT mint, max 7,777,000, only via the NFT contract.">
 <style>
 body{font-family:system-ui,sans-serif;max-width:720px;margin:0 auto;padding:24px 16px;line-height:1.6}
 button{padding:12px 20px;font-size:16px;cursor:pointer;background:#f5c542;border:0;border-radius:8px;font-weight:600;margin:4px 4px 4px 0}
@@ -10,43 +10,43 @@ input{padding:10px;font-size:15px;width:100%;box-sizing:border-box;margin:4px 0}
 .small{color:#666;font-size:14px} code{word-break:break-all} a{color:#b8860b}
 </style></head><body>
 <h1>Deploy Token Framlin (FRML)</h1>
-<p>Token reward untuk Framlin Genesis Random. Ini adalah deploy pertama token ini — belum ada token FRML yang beredar sebelum langkah ini.</p>
-<p><b>Spesifikasi yang sudah diputuskan (tidak bisa diubah setelah deploy):</b></p>
+<p>Token reward for Framlin Genesis Random. This is this token's first deployment — no FRML tokens were in circulation before this step.</p>
+<p><b>Specifications already decided (cannot be changed after deployment):</b></p>
 <ul>
 <li>Nama: <b>Framlin</b> · Simbol: <b>FRML</b> · Desimal: <b>18</b></li>
-<li><b>1.000 FRML per 1 mint NFT</b>, rata untuk semua tier</li>
-<li>Maksimal: <b>7.777.000 FRML</b> (7.777 NFT × 1.000) — tercapai hanya lewat mint NFT</li>
-<li>Token <b>hanya bisa dibuat oleh minter</b> (kontrak NFT, setelah dihubungkan). Owner <b>tidak bisa mencetak token langsung</b>.</li>
+<li><b>1,000 FRML per 1 NFT mint</b>, flat for all tiers</li>
+<li>Max: <b>7,777,000 FRML</b> (7,777 NFTs × 1,000) — reached only via NFT minting</li>
+<li>Tokens can <b>only be created by the minter</b> (the NFT contract, once connected). The owner <b>cannot mint tokens directly</b>.</li>
 <li>Tanpa pajak transfer, tanpa burn, tanpa blacklist.</li>
 </ul>
-<p class="small">Peringatan: kontrak ini <b>belum diaudit</b>. Coba dengan jumlah kecil dulu. Deploy hanya dari wallet kamu sendiri di dApp browser (OKX / MetaMask / Trust). Jangan pernah kirim seed phrase atau private key ke siapa pun.</p>
+<p class="small">Warning: this contract is <b>unaudited</b>. Try small amounts first. Deploy only from your own wallet in a dApp browser (OKX / MetaMask / Trust). Never send a seed phrase or private key to anyone.</p>
 
 <div class="card"><h2>1 · Connect</h2>
-<p><button id="connectBtn">Connect Wallet (OKX dulu)</button> <span id="walletLine" class="small">Belum terhubung</span></p>
-<p class="small">Halaman ini mendeteksi OKX dulu (<code>window.okxwallet</code>), lalu wallet lain, dan akan meminta pindah/tambah BNB Smart Chain (56).</p></div>
+<p><button id="connectBtn">Connect Wallet (OKX first)</button> <span id="walletLine" class="small">Not connected</span></p>
+<p class="small">This page detects OKX first (<code>window.okxwallet</code>), then other wallets, and will ask to switch/add BNB Smart Chain (56).</p></div>
 
 <div class="card"><h2>2 · Deploy Token</h2>
-<p>Minter awal (alamat yang boleh mencetak token):</p>
-<input id="minterInput" placeholder="0x… alamat kontrak NFT — atau wallet kamu dulu kalau NFT belum di-deploy">
-<p class="small">Kalau kontrak NFT belum ada, isi dengan wallet kamu dulu. Setelah NFT di-deploy, pindahkan minter ke alamat kontrak NFT lewat langkah 3 — sebelum mint dibuka. Selama minter masih wallet kamu, jangan janjikan token ke siapa pun.</p>
-<p><button id="deployBtn">Deploy Token</button> <button id="copyBtn">Salin Data Deploy (manual)</button></p>
+<p>Initial minter (address allowed to mint tokens):</p>
+<input id="minterInput" placeholder="0x… NFT contract address — or your wallet for now if the NFT is not deployed yet">
+<p class="small">If the NFT contract does not exist yet, fill in your wallet for now. After the NFT is deployed, move the minter to the NFT contract address via step 3 — before mint is opened. While the minter is still your wallet, do not promise tokens to anyone.</p>
+<p><button id="deployBtn">Deploy Token</button> <button id="copyBtn">Copy Deploy Data (manual)</button></p>
 <p id="deployStatus" class="small"></p>
-<p>Alamat token: <code id="tokenAddr">—</code> · <span id="tokenLinks"></span></p></div>
+<p>Token address: <code id="tokenAddr">—</code> · <span id="tokenLinks"></span></p></div>
 
-<div class="card"><h2>3 · Atur Minter (setelah NFT di-deploy)</h2>
-<p>Alamat token:</p><input id="tokenInput" placeholder="0x… alamat token FRML">
-<p>Minter baru (alamat kontrak NFT):</p><input id="newMinterInput" placeholder="0x… alamat kontrak NFT">
+<div class="card"><h2>3 · Set Minter (after the NFT is deployed)</h2>
+<p>Token address:</p><input id="tokenInput" placeholder="0x… FRML token address">
+<p>New minter (NFT contract address):</p><input id="newMinterInput" placeholder="0x… NFT contract address">
 <p><button id="setMinterBtn">Set Minter</button></p>
 <p id="minterStatus" class="small"></p>
-<p class="small">Tombol ini hanya bisa dijalankan oleh owner token (yang men-deploy). Cek owner dulu lewat langkah 4 — kalau wallet yang terhubung bukan owner, transaksi akan gagal di kontrak.</p></div>
+<p class="small">This button can only be run by the token owner (the deployer). Check the owner first via step 4 — if the connected wallet is not the owner, the transaction will fail in the contract.</p></div>
 
-<div class="card"><h2>4 · Cek Token</h2>
-<p>Alamat token:</p><input id="checkInput" placeholder="0x… alamat token FRML">
-<p><button id="checkBtn">Cek Token</button></p>
+<div class="card"><h2>4 · Check Token</h2>
+<p>Token address:</p><input id="checkInput" placeholder="0x… FRML token address">
+<p><button id="checkBtn">Check Token</button></p>
 <pre id="checkOut" class="small">—</pre>
-<p class="small">Cek juga di BscScan: <code>https://bscscan.com/token/[alamat token]</code> setelah deploy.</p></div>
+<p class="small">Also check on BscScan: <code>https://bscscan.com/token/[token address]</code> after deployment.</p></div>
 
-<p class="small">Galeri: <a href="index.html">Framlin Genesis Random</a> · Halaman mint: <a href="mint.html">mint.html</a> · Panduan agent: <a href="skill.md">skill.md</a> · Repo: <a href="https://github.com/doodlesstore/Framlingenesis">doodlesstore/Framlingenesis</a></p>
+<p class="small">Gallery: <a href="index.html">Framlin Genesis Random</a> · Mint page: <a href="mint.html">mint.html</a> · Agent guide: <a href="skill.md">skill.md</a> · Repo: <a href="https://github.com/doodlesstore/Framlingenesis">doodlesstore/Framlingenesis</a></p>
 
 <script>
 var TOKEN_BYTECODE = "0x608060405234801562000010575f80fd5b5060405162000f5438038062000f54833981016040819052620000339162000128565b60405180604001604052806007815260200166233930b6b634b760c91b815250604051806040016040528060048152602001631194935360e21b8152508160039081620000819190620001f7565b506004620000908282620001f7565b505050620000ad620000a7620000d360201b60201c565b620000d7565b600680546001600160a01b0319166001600160a01b0392909216919091179055620002bf565b3390565b600580546001600160a01b038381166001600160a01b0319831681179093556040519116919082907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0905f90a35050565b5f6020828403121562000139575f80fd5b81516001600160a01b038116811462000150575f80fd5b9392505050565b634e487b7160e01b5f52604160045260245ffd5b600181811c908216806200018057607f821691505b6020821081036200019f57634e487b7160e01b5f52602260045260245ffd5b50919050565b601f821115620001f2575f81815260208120601f850160051c81016020861015620001cd5750805b601f850160051c820191505b81811015620001ee57828155600101620001d9565b5050505b505050565b81516001600160401b0381111562000213576200021362000157565b6200022b816200022484546200016b565b84620001a5565b602080601f83116001811462000261575f8415620002495750858301515b5f19600386901b1c1916600185901b178555620001ee565b5f85815260208120601f198616915b82811015620002915788860151825594840194600190910190840162000270565b5085821015620002af57878501515f19600388901b60f8161c191681555b5050505050600190811b01905550565b610c8780620002cd5f395ff3fe608060405234801561000f575f80fd5b506004361061011c575f3560e01c806370a08231116100a9578063a9059cbb1161006e578063a9059cbb14610256578063dd62ed3e14610269578063ed016a461461027c578063f2fde38b1461028c578063fca3b5aa1461029f575f80fd5b806370a08231146101fa578063715018a6146102225780638da5cb5b1461022a57806395d89b411461023b578063a457c2d714610243575f80fd5b806323b872dd116100ef57806323b872dd1461019e578063313ce567146101b157806332cb6b0c146101c057806339509351146101d257806340c10f19146101e5575f80fd5b806306fdde0314610120578063075461721461013e578063095ea7b31461016957806318160ddd1461018c575b5f80fd5b6101286102b2565b6040516101359190610ae2565b60405180910390f35b600654610151906001600160a01b031681565b6040516001600160a01b039091168152602001610135565b61017c610177366004610b48565b610342565b6040519015158152602001610135565b6002545b604051908152602001610135565b61017c6101ac366004610b70565b61035b565b60405160128152602001610135565b6101906a066ed803c808101aa0000081565b61017c6101e0366004610b48565b61037e565b6101f86101f3366004610b48565b61039f565b005b610190610208366004610ba9565b6001600160a01b03165f9081526020819052604090205490565b6101f8610454565b6005546001600160a01b0316610151565b610128610467565b61017c610251366004610b48565b610476565b61017c610264366004610b48565b6104f0565b610190610277366004610bc9565b6104fd565b610190683635c9adc5dea0000081565b6101f861029a366004610ba9565b610527565b6101f86102ad366004610ba9565b6105a0565b6060600380546102c190610bfa565b80601f01602080910402602001604051908101604052809291908181526020018280546102ed90610bfa565b80156103385780601f1061030f57610100808354040283529160200191610338565b820191905f5260205f20905b81548152906001019060200180831161031b57829003601f168201915b5050505050905090565b5f3361034f81858561063d565b60019150505b92915050565b5f33610368858285610760565b6103738585856107d8565b506001949350505050565b5f3361034f81858561039083836104fd565b61039a9190610c32565b61063d565b6006546001600160a01b031633146103eb5760405162461bcd60e51b815260206004820152600a6024820152693737ba1036b4b73a32b960b11b60448201526064015b60405180910390fd5b6a066ed803c808101aa000008161040160025490565b61040b9190610c32565b11156104465760405162461bcd60e51b815260206004820152600a6024820152696d617820737570706c7960b01b60448201526064016103e2565b610450828261097a565b5050565b61045c610a37565b6104655f610a91565b565b6060600480546102c190610bfa565b5f338161048382866104fd565b9050838110156104e35760405162461bcd60e51b815260206004820152602560248201527f45524332303a2064656372656173656420616c6c6f77616e63652062656c6f77604482015264207a65726f60d81b60648201526084016103e2565b610373828686840361063d565b5f3361034f8185856107d8565b6001600160a01b039182165f90815260016020908152604080832093909416825291909152205490565b61052f610a37565b6001600160a01b0381166105945760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b60648201526084016103e2565b61059d81610a91565b50565b6105a8610a37565b6001600160a01b0381166105ec5760405162461bcd60e51b815260206004820152600b60248201526a6d696e746572207a65726f60a81b60448201526064016103e2565b600680546001600160a01b038381166001600160a01b0319831681179093556040519116919082907f02b23d62d8f733974f8cb13eb804b20135521322b70997c991fc01406632389f905f90a35050565b6001600160a01b03831661069f5760405162461bcd60e51b8152602060048201526024808201527f45524332303a20617070726f76652066726f6d20746865207a65726f206164646044820152637265737360e01b60648201526084016103e2565b6001600160a01b0382166107005760405162461bcd60e51b815260206004820152602260248201527f45524332303a20617070726f766520746f20746865207a65726f206164647265604482015261737360f01b60648201526084016103e2565b6001600160a01b038381165f8181526001602090815260408083209487168084529482529182902085905590518481527f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925910160405180910390a3505050565b5f61076b84846104fd565b90505f1981146107d257818110156107c55760405162461bcd60e51b815260206004820152601d60248201527f45524332303a20696e73756666696369656e7420616c6c6f77616e636500000060448201526064016103e2565b6107d2848484840361063d565b50505050565b6001600160a01b03831661083c5760405162461bcd60e51b815260206004820152602560248201527f45524332303a207472616e736665722066726f6d20746865207a65726f206164604482015264647265737360d81b60648201526084016103e2565b6001600160a01b03821661089e5760405162461bcd60e51b815260206004820152602360248201527f45524332303a207472616e7366657220746f20746865207a65726f206164647260448201526265737360e81b60648201526084016103e2565b6001600160a01b0383165f90815260208190526040902054818110156109155760405162461bcd60e51b815260206004820152602660248201527f45524332303a207472616e7366657220616d6f756e7420657863656564732062604482015265616c616e636560d01b60648201526084016103e2565b6001600160a01b038481165f81815260208181526040808320878703905593871680835291849020805487019055925185815290927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef910160405180910390a36107d2565b6001600160a01b0382166109d05760405162461bcd60e51b815260206004820152601f60248201527f45524332303a206d696e7420746f20746865207a65726f20616464726573730060448201526064016103e2565b8060025f8282546109e19190610c32565b90915550506001600160a01b0382165f81815260208181526040808320805486019055518481527fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef910160405180910390a35050565b6005546001600160a01b031633146104655760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657260448201526064016103e2565b600580546001600160a01b038381166001600160a01b0319831681179093556040519116919082907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0905f90a35050565b5f6020808352835180828501525f5b81811015610b0d57858101830151858201604001528201610af1565b505f604082860101526040601f19601f8301168501019250505092915050565b80356001600160a01b0381168114610b43575f80fd5b919050565b5f8060408385031215610b59575f80fd5b610b6283610b2d565b946020939093013593505050565b5f805f60608486031215610b82575f80fd5b610b8b84610b2d565b9250610b9960208501610b2d565b9150604084013590509250925092565b5f60208284031215610bb9575f80fd5b610bc282610b2d565b9392505050565b5f8060408385031215610bda575f80fd5b610be383610b2d565b9150610bf160208401610b2d565b90509250929050565b600181811c90821680610c0e57607f821691505b602082108103610c2c57634e487b7160e01b5f52602260045260245ffd5b50919050565b8082018082111561035557634e487b7160e01b5f52601160045260245ffdfea2646970667358221220bf4d08d98b6cdb8304caff7193d1d03a5b5f1893877e9b34d163d41a0302b17f64736f6c63430008140033";
@@ -70,38 +70,38 @@ function decodeStr(hex){
 function decodeUint(hex){ return BigInt(hex); }
 document.getElementById("connectBtn").onclick = function(){
   var p = getProvider();
-  if (!p) { document.getElementById("walletLine").textContent = "Wallet tidak ditemukan — buka halaman ini di dApp browser OKX / MetaMask."; return; }
+  if (!p) { document.getElementById("walletLine").textContent = "Wallet not found — open this page in the OKX / MetaMask dApp browser."; return; }
   p.request({method:"eth_requestAccounts"}).then(function(accs){
     account = accs[0];
-    document.getElementById("walletLine").textContent = "Terhubung: " + account;
+    document.getElementById("walletLine").textContent = "Connected: " + account;
     return p.request({method:"wallet_switchEthereumChain", params:[{chainId:"0x38"}]}).catch(function(){
       return p.request({method:"wallet_addEthereumChain", params:[{chainId:"0x38", chainName:"BNB Smart Chain", nativeCurrency:{name:"BNB", symbol:"BNB", decimals:18}, rpcUrls:[RPC], blockExplorerUrls:["https://bscscan.com"]}]});
     });
-  }).catch(function(e){ document.getElementById("walletLine").textContent = "Gagal terhubung: " + (e && e.message ? e.message : e); });
+  }).catch(function(e){ document.getElementById("walletLine").textContent = "Failed to connect: " + (e && e.message ? e.message : e); });
 };
 function buildDeployData(){
   var m = document.getElementById("minterInput").value.trim();
-  if (!/^0x[0-9a-fA-F]{40}$/.test(m)) throw new Error("Alamat minter tidak valid (harus 0x + 40 karakter hex).");
+  if (!/^0x[0-9a-fA-F]{40}$/.test(m)) throw new Error("Minter address is not valid (must be 0x + 40 hex characters).");
   return TOKEN_BYTECODE + padAddr(m);
 }
 document.getElementById("copyBtn").onclick = function(){
   try {
     var d = buildDeployData();
-    if (navigator.clipboard) navigator.clipboard.writeText(d).then(function(){ document.getElementById("deployStatus").textContent = "Data deploy tersalin (" + d.length + " karakter). Tempel di wallet kamu sebagai data transaksi deploy (contract creation, tanpa alamat tujuan)."; });
+    if (navigator.clipboard) navigator.clipboard.writeText(d).then(function(){ document.getElementById("deployStatus").textContent = "Deploy data copied (" + d.length + " characters). Paste it in your wallet as the deploy transaction data (contract creation, no destination address)."; });
     else document.getElementById("deployStatus").textContent = d;
-  } catch (e) { document.getElementById("deployStatus").textContent = "Gagal: " + e.message; }
+  } catch (e) { document.getElementById("deployStatus").textContent = "Failed: " + e.message; }
 };
 document.getElementById("deployBtn").onclick = function(){
   var p = getProvider();
-  if (!p || !account) { document.getElementById("deployStatus").textContent = "Hubungkan wallet dulu (langkah 1)."; return; }
+  if (!p || !account) { document.getElementById("deployStatus").textContent = "Connect your wallet first (step 1)."; return; }
   var data;
-  try { data = buildDeployData(); } catch (e) { document.getElementById("deployStatus").textContent = "Gagal: " + e.message; return; }
+  try { data = buildDeployData(); } catch (e) { document.getElementById("deployStatus").textContent = "Failed: " + e.message; return; }
   document.getElementById("deployStatus").textContent = "Menghitung gas…";
   p.request({method:"eth_estimateGas", params:[{from: account, data: data}]}).then(function(gas){
-    document.getElementById("deployStatus").textContent = "Estimasi gas: " + hexToInt(gas) + ". Mengirim transaksi deploy…";
+    document.getElementById("deployStatus").textContent = "Gas estimate: " + hexToInt(gas) + ". Sending deploy transaction…";
     return p.request({method:"eth_sendTransaction", params:[{from: account, data: data}]});
   }).then(function(txHash){
-    document.getElementById("deployStatus").textContent = "Transaksi terkirim: " + txHash + ". Menunggu receipt…";
+    document.getElementById("deployStatus").textContent = "Transaction sent: " + txHash + ". Waiting for receipt…";
     var tries = 0;
     var timer = setInterval(function(){
       tries++;
@@ -113,24 +113,24 @@ document.getElementById("deployBtn").onclick = function(){
           document.getElementById("tokenInput").value = addr;
           document.getElementById("checkInput").value = addr;
           document.getElementById("tokenLinks").innerHTML = '<a href="https://bscscan.com/token/' + addr + '">BscScan</a>';
-          document.getElementById("deployStatus").textContent = "Token ter-deploy di: " + addr + " (tx " + txHash + "). Simpan alamat ini dan kirim ke pembuat situs untuk verifikasi + aktivasi.";
-        } else if (tries > 60) { clearInterval(timer); document.getElementById("deployStatus").textContent = "Receipt belum muncul setelah 60 cek — cek tx di BscScan: " + txHash; }
+          document.getElementById("deployStatus").textContent = "Token deployed at: " + addr + " (tx " + txHash + "). Save this address and send it to the site builder for verification + activation.";
+        } else if (tries > 60) { clearInterval(timer); document.getElementById("deployStatus").textContent = "Receipt has not appeared after 60 checks — check the tx on BscScan: " + txHash; }
       });
     }, 5000);
-  }).catch(function(e){ document.getElementById("deployStatus").textContent = "Gagal: " + (e && e.message ? e.message : e); });
+  }).catch(function(e){ document.getElementById("deployStatus").textContent = "Failed: " + (e && e.message ? e.message : e); });
 };
 document.getElementById("setMinterBtn").onclick = function(){
   var p = getProvider();
-  if (!p || !account) { document.getElementById("minterStatus").textContent = "Hubungkan wallet dulu (langkah 1)."; return; }
+  if (!p || !account) { document.getElementById("minterStatus").textContent = "Connect your wallet first (step 1)."; return; }
   var token = document.getElementById("tokenInput").value.trim();
   var nm = document.getElementById("newMinterInput").value.trim();
-  if (!/^0x[0-9a-fA-F]{40}$/.test(token) || !/^0x[0-9a-fA-F]{40}$/.test(nm)) { document.getElementById("minterStatus").textContent = "Alamat token / minter baru tidak valid."; return; }
+  if (!/^0x[0-9a-fA-F]{40}$/.test(token) || !/^0x[0-9a-fA-F]{40}$/.test(nm)) { document.getElementById("minterStatus").textContent = "Token / new minter address is not valid."; return; }
   var data = "0xfca3b5aa" + padAddr(nm);
-  p.request({method:"eth_sendTransaction", params:[{from: account, to: token, data: data}]}).then(function(h){ document.getElementById("minterStatus").textContent = "Transaksi setMinter terkirim: " + h + ". Verifikasi lewat langkah 4 (minter harus = alamat kontrak NFT)."; }).catch(function(e){ document.getElementById("minterStatus").textContent = "Gagal: " + (e && e.message ? e.message : e); });
+  p.request({method:"eth_sendTransaction", params:[{from: account, to: token, data: data}]}).then(function(h){ document.getElementById("minterStatus").textContent = "setMinter transaction sent: " + h + ". Verify via step 4 (minter must = the NFT contract address)."; }).catch(function(e){ document.getElementById("minterStatus").textContent = "Failed: " + (e && e.message ? e.message : e); });
 };
 document.getElementById("checkBtn").onclick = function(){
   var token = document.getElementById("checkInput").value.trim();
-  if (!/^0x[0-9a-fA-F]{40}$/.test(token)) { document.getElementById("checkOut").textContent = "Alamat token tidak valid."; return; }
+  if (!/^0x[0-9a-fA-F]{40}$/.test(token)) { document.getElementById("checkOut").textContent = "Token address is not valid."; return; }
   Promise.all([
     callData(token, "0x06fdde03"), callData(token, "0x95d89b41"), callData(token, "0x313ce567"),
     callData(token, "0x18160ddd"), callData(token, "0x07546172"), callData(token, "0xed016a46"),
@@ -141,6 +141,6 @@ document.getElementById("checkBtn").onclick = function(){
       "\ntotalSupply: " + decodeUint(r[3]).toString() + "\nminter: " + ("0x" + r[4].slice(-40)) +
       "\nTOKENS_PER_MINT: " + decodeUint(r[5]).toString() + "\nMAX_SUPPLY: " + decodeUint(r[6]).toString() +
       "\nowner: " + ("0x" + r[7].slice(-40));
-  }).catch(function(e){ document.getElementById("checkOut").textContent = "Gagal membaca kontrak: " + e.message + " (pastikan alamat token benar dan sudah ter-deploy di BNB Chain)."; });
+  }).catch(function(e){ document.getElementById("checkOut").textContent = "Failed to read contract: " + e.message + " (make sure the token address is correct and already deployed on BNB Chain)."; });
 };
 </script></body></html>
