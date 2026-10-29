@@ -29,6 +29,11 @@ earlier version of it.
   to the BNB Chain network on top of the creator fee and cannot be
   fixed. Until the contract is deployed and its on-chain fee tiers are
   verified, do NOT execute a mint.
+- **Token reward (planned, NOT deployed):** minting will also earn tokens,
+  but the token contract is NOT deployed yet and no token name, amount per
+  mint, or total supply has been decided. Do NOT promise, price, claim,
+  or distribute any token until the owner publishes the token contract;
+  the token deploy will be built later.
 - **Metadata: LIVE.** All 7,777 files are in this repo under `meta/`.
 - **Gallery photos: live without a PNG upload.** The site shows each token
   by taking the one live master art (`https://framlin.xyz/icon-512.png`)
